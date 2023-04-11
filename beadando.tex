@@ -1,0 +1,203 @@
+\documentclass[11pt,a4pape,draftr]{article}
+	\usepackage[iso]{datetime}
+	\usepackage[hungarian]{babel}
+	\usepackage{amssymb}
+	\usepackage{amsmath}
+
+	\title{Nemlineáris egyenletrendszerek megoldása}
+	\date{\today}
+	\author{Filep Illés Attila}
+
+\begin{document}
+ 	\maketitle
+	\pagenumbering{gobble}
+  	\newpage
+  	\pagenumbering{arabic}
+
+	\begin{abstract}
+
+	\end{abstract}
+	\tableofcontents
+	\section*{Bevezetés}
+		\paragraph{}
+			A dokumentum célja a sztochasztikus folyamatok alkalmazása nevű tárgyon tanult, kiemelt elemek demonstrációja. A demonstráció MATLAB könyvtár elkészítésével történik. A könyvtárnak a célja, hogy szimbolikus matematikai eszközökkel a folyamatokat bemutassa. A könyvtárnak nem célja a semmilyen informatikai optimalizáltságot megvalósítani.
+	\part{Stacionárius folyamatok}
+		\section{Alapvető definíciók}
+			\subsection{Valószínűségi változó}
+				Legyen:
+				\begin{itemize}
+					\item $\Omega$ egy nem üres halmaz
+					\item $\{\omega : X(\omega) < x\} \in \mathcal{A}$
+					\item $x \in \Bbb{R}$
+					\item $\mathcal{A}$ az $\Omega$ részhalmazaiból alkotott esemény $\sigma$-algebrája (tehát $(\Omega, \mathcal{A})$ mérhető tér)
+				\end{itemize}
+				Akkor $X: \Omega \to \Bbb{R}$ függvényt valószínűségi változónak hívunk.
+			\subsection{Sztochasztikus folyamat}
+				\paragraph{}
+					A sztochasztikus folyamat (vagy véletlen folyamat) egy olyan matematikai modell, amely egy vagy több időfüggő véletlen változó által létrehozott folyamatot ír le. A sztochasztikus folyamatok olyan rendszerek leírására szolgálnak, amelyekben a jövő állapota részben véletlenszerűen határozza meg a múlt és a jelen állapotát.
+				\paragraph{}
+					A sztochasztikus folyamatok általában valószínűségi változók sorozataként jelennek meg, amelyeknek az idő függvényében változó értékei vannak. A folyamatot gyakran matematikailag leírt egyenletekkel vagy valószínűségi eloszlásokkal írják le.
+				\paragraph{}
+					A sztochasztikus folyamatok számos területen alkalmazhatók, például az anyag- és energiaátvitel, a kommunikációs rendszerek, a pénzügyek, az idősorok elemzése és a gépi tanulás területén.
+				\subsubsection{Sztochasztikus folyamatok kompatibilitási feltételei}
+					A sztochasztikus folyamatok kompatibilitási feltételei a következők:
+					\begin{itemize}
+					   \item Az időpillanatok száma felsorolható, véges vagy végtelen, de számontartható.
+					   \item Az időpillanatok sorozata szigorúan növekvő, azaz $t_1 < t_2 < \cdots < t_n$ vagy $t_1 < t_2 < \cdots < t_{\infty}$.
+					   \item Az időpillanatok közötti időközök meghatározottak és végesek vagy végtelenek.
+					   \item A folyamat értékei véletlenszerűek, és általában valószínűségi változóként vannak definiálva.
+					   \item A folyamat értékei időfüggők, és az időbeli elmozdulásokkal szembeni szimmetriára vonatkozó korlátozásokat kell teljesítenie. Például a stacionárius folyamatok esetében az eloszlások nem változnak az idő múlásával, és az átlag és szórás időfüggetlen.
+					\end{itemize}
+					Ezen kívül a sztochasztikus folyamatoknál általában szükséges az ergodicitás feltétele, amely azt jelenti, hogy a folyamat minden pillanatban eléri minden lehetséges állapotát az idő végtelen futamán. Ez fontos feltétele a statisztikai tulajdonságok meghatározásának, mert lehetővé teszi a folyamat várható értékének becslését a mintavételezés révén.
+			\subsection{Várható érték}
+				\paragraph{}
+					Lényegében az első (centrális) momentum, egy funkciónál.
+				\paragraph{Diszkrét esetben}
+					$$E(X) = \sum_{i=1}^{\infty}p_i x_i$$
+				\paragraph{Folytonos esetben}
+					$$E(X) = \int_{-\infty}^{\infty}x f(x)dx$$
+				\subsubsection{Várható érték létezésének a feltétele}
+					\paragraph{Diszkrét esetben}
+						$$E(X) = \sum_{i=1}^{\infty}p_i |x_i| < \infty$$
+					\paragraph{Folytonos esetben}
+						$$E(X) = \int_{-\infty}^{\infty}|x| f(x)dx < \infty$$
+	
+				\subsubsection{Várható érték tulajdonságai}
+					\begin{itemize}
+						\item Ha $X$ az $1$ valószínűséggel korlátos valószínűségi változó, akkor van olyan $x_1$ és $x_2$ konstans, hogy $P(x_1 \le X \le x_2)=1$ akkor $x_1 \le E(X) \le x_2$
+						\item $E(cX)=cE(X)$
+						\item $P(X=c) = 1 \to E(X)=c$
+						\item $E(X+Y) = E(X) + E(Y)$
+						\item $E(X*Y)=E(X)*E(Y)$
+					\end{itemize}
+	
+			\subsection{Kovariancia függvény}
+				$$ \begin{aligned}
+					R_X(u) &= \operatorname{cov}(X_t, X_{t-u}) \\
+					&= E[(X_t - E(X_t))(X_{t-u}-E(X_{t-u}))]
+				\end{aligned} $$
+	
+				Ez itt nem a kovarianciamátrixot fogja vissza adni, hanem az eltérés közötti összefüggést.
+				\subsubsection{Kovariancia függvény tulajdonságai}
+					\begin{itemize}
+					\item Additivitás: Ha $X$ és $Y$ véletlen változók és $a$ és $b$ valós számok, akkor a kovarianciafüggvény additív, azaz:
+					$$cov(aX + bY, Z) = a_cov(X, Z) + b_cov(Y, Z)$$
+					
+					\item Szimmetria: A kovarianciafüggvény szimmetrikus, azaz
+					$$cov(X,Y) = cov(Y,X)$$
+					
+					\item Állandóság: Ha $X$ és $Y$ véletlen változók és $a$ és $b$ konstansok, akkor a kovarianciafüggvény állandó marad, ha mindkét változót $a$-val és $b$-vel eltoljuk. Azaz,
+					$$cov(X + a, Y + b) = cov(X, Y)$$
+					
+					\item Nemnegativitás: A kovarianciafüggvény mindig nemnegatív, azaz
+					
+					$$cov(X, X) \ge 0$$
+					
+					Ha a két változó független, akkor az egyenlőség akkor és csak akkor áll fenn, ha az $X$ állandó.
+					
+					\item Normálás: Ha $X$ és $Y$ normális eloszlásúak, akkor a kovarianciafüggvény teljesen meghatározza a két változó közötti kapcsolatot.
+					
+					\item Két független változó kovarianciája nulla: Ha $X$ és $Y$ független változók, akkor a kovarianciafüggvényük zérus:
+					
+					$$cov(X, Y) = 0$$
+					\end{itemize}
+			\subsection{Gauss folyamat}
+			Egy folyamatot Gauss folyamatnak nevezünk, ha a következő tulajdonságokkal rendelkezik:
+			\begin{itemize}
+				\item Az összes véges dimenziós eloszlása Gauss-eloszlású kell legyen. Ez azt jelenti, hogy az összes véges dimenziós eloszlásfüggvény szimmetrikus, és a karakterisztikus függvénye exponenciális alakú kell legyen.
+				\begin{itemize}
+					\item Korreláció mátrixokat mind meg kell nézni, hogy pozitívak-e.
+				\end{itemize}
+					\item Az összes időpillanatra vonatkozó középérték és szórás azonos kell legyen. A folyamat homogénnek tekinthető.
+				\begin{itemize}
+					\item Ezt homogenitás teszttel lehet ellenőrizni.
+				\end{itemize}
+				\item Az összes időpillanatban értékeket vesz fel végtelen dimenziós vektorokban. A végtelen dimenziós eloszlás azonban nem kell Gauss-eloszlásúnak lennie.
+			\end{itemize}
+			\subsection{Herglotz-tétel}
+				\paragraph{}
+					Legyen $R_X (u)$ a folyamat kovarianciafüggvénye, és tegyük fel, hogy ez a függvény az időbeli eltolásra invariáns, azaz csak a két időpont közötti különbségtől függ. Ekkor $R_X (u)$ Herglotz-féle sűrűségfüggvényként is felírható, azaz teljesül rá a következő:
+
+					$$R_X (u)=\int_{-\infty}^\infty e^{i*\lambda*u}*g_X(\lambda)d\lambda$$
+
+					ahol $g_X(\lambda)$ egy valós, szigorúan monoton növekvő eloszlásfüggvény. Más szóval, a kovarianciafüggvény Fourier-transzformáltját egy valós eloszlásfüggvénnyel lehet leírni.
+		\section{Stacionárius folyamatok}
+			\paragraph{}
+				A stacionárius folyamatok olyan valószínűségi folyamatok, amelyeknek a statisztikai tulajdonságai nem változnak az idő múlásával. Az ilyen folyamatok esetében a várható érték és a kovariancia függvénye nem függ az időtől, vagyis az idősor jellege nem változik az idő múlásával.
+			\paragraph{}
+				A stacionárius folyamatok matematikailag jól definiáltak és számos fontos tulajdonsággal rendelkeznek, amelyek lehetővé teszik számunkra az idősorok modellezését és előrejelzését. Az ilyen folyamatokra vonatkozóan meghatározott várható érték és kovariancia függvény jellemzi a folyamatot teljes egészében. 
+			\paragraph{}
+				A stacionárius folyamatok fontosak a való életben előforduló idősorok modellezésében is, például a gazdasági mutatók és a meteorológiai adatok előrejelzésében. Az ilyen folyamatok matematikai tulajdonságai lehetővé teszik az idősorok előrejelzését, a kockázatbecslést és az optimalizálást. 
+			\subsection{Tágabb értelemben stacionárius folyamat}
+				\paragraph{}
+					Legyen $\{X_t, t \in \mathcal{T}\}$, ahol
+					\begin{itemize}
+						\item $X$ a $t$ időponthoz tartozó sztochasztikus folyamat
+					\end{itemize}
+					A tágabb értelemben vett stacionárius folyamatot szokás röviden stacionárius folyamatnak nevezni.
+				\paragraph{}
+					Ha egy sztochasztikus folyamat tágabb értelemben stacionárius, az azt jelenti, hogy a várható értéke és a kovariancia függvénye csak az időbeli különbségtől függ, és nem az abszolút időponttól.
+				\subsubsection{Tesztelés tágabb értelemben vett stacionárius folyamatra}
+					\paragraph{}
+						Amennyiben a következő feltételek megegyeznek az egy tágabb értelemben vett stacionárius folyamat:
+						\begin{itemize}
+							\item $\mu_X (t) = E(X_t)$
+							\item $R_X(s,t) = cov(X_s, X_t) = E(X_t - \mu_X (t)) (X_s - \mu_X (s))$
+						\end{itemize}
+						Ahol a következők a következőket jelenti:
+						\begin{itemize}
+							\item $t, s \in \mathcal{T}$, tehát időbéli változók
+							\item $\mu_X (t)$ egy konstans, ami csak az időtől függ és megegyezik a várható értékkel
+							\item $R_X$ a kovariancia függvény
+							\item $E(X_t^2) < \infty$ 
+						\end{itemize}
+			\subsection{Szűkebb értelemben stacionárius folyamat}
+				\paragraph{}
+
+				Ahhoz, hogy valamit szűkebb értelemben stacionáriusnak nevezzünk teljesülnie kell, hogy $(X_{t_1}, \dots , X_{t_n})$ és $(X_{t_{1+t}}, \dots, X_{t_n + t})$ valószínűségi változók  együttes eloszlása megegyezik és tágabb értelemben stacionárius folyamat.
+
+		\section{Stacionárius Gauss folyamatok}
+			\paragraph{}
+				A stacionárius Gauss-folyamat olyan Gauss-folyamat, amelynek a statisztikai tulajdonságai (középérték, szórás, autokorrelációs függvény) időtől függetlenek, vagyis az időbeli változások nem befolyásolják ezeket a tulajdonságokat.
+		\section{Spektrál előállítás}
+			\paragraph{}
+				A Herglotz-tétel szerint, a kovarianciafüggvényt kitudjuk fejezni a következő képen:
+				$$R_X (u)=\int_{-\infty}^\infty e^{i*\lambda*u}*g_X(\lambda)d\lambda$$
+				Ebben az összefüggésben a spektrális sűrűségfüggvény a $g_X(\lambda)$.
+			\paragraph{}
+				Analóg módon értelmezzük a diszkrét esetet is:
+				$$R_X(u) = \sum_{k = - \infty}^\infty \sigma^2_k e^{i*u* \lambda_k}$$
+			\subsection{Spektrális sűrűségfüggvény előállítása speciális esetben}
+				Ha $\sum_{k=- \infty}^{\infty}|R_X(u)| < \infty$ feltétel teljesül, akkor a spektrális sűrűségfüggvény közvetlenül is előállítható:
+				$$g_X(\lambda) = \cfrac{1}{2 \pi} \sum_{k = - \infty} ^{\infty} R_X(k) e^{-i * k *\lambda}$$
+				Ez tovább írható:
+				$$
+				\begin{aligned}
+					g_X(\lambda) =& \cfrac{1}{ 2  \pi} \sum_{k = - \infty}^{\infty}R_X(k)cos(k \lambda) = \\
+					=& \cfrac{1}{2 \pi} \left( \sigma_X^2 + 2 \sum_{k = 1}^{\infty} R_X(k) cos(k \lambda) \right)
+				\end{aligned}$$
+			\subsection{Spektrális sűrűségfüggvény segítségével lévő stacionárius folyamat előállítása}
+				\paragraph{}
+					$$X_t = \mu_X + \int_{- \pi} ^\pi e^{it\lambda} d Z(\lambda)$$
+					$$X_t = \mu_X + \sum_{k=-\infty}^{\infty}Z_ke^{i*t*\lambda_k}$$
+					\begin{itemize}
+						\item $\mu_X$ a várható érték
+						\item $t$ az idő változó
+						\item $Z(\lambda), -\pi \le \lambda \le \pi$ egy sztochasztikus folyamat, amely zérus várható értékű
+						\item $E(Z(\lambda^{\prime\prime} - Z(\lambda^{\prime}))^2 = G_X(\lambda^{\prime \prime}) -G_X(\lambda^{\prime})$, ha $-\pi \le \lambda^{\prime} < \lambda^{\prime \prime} \le \pi$ 
+					\end{itemize}
+		\section{Diszkrét spektrum}
+
+		\section{Folytonos Spektrum}
+		\section{Becslések}
+			\subsection{Várható érték becslése}
+			\subsection{Kovariancia függvény becslése}
+		\section{Fehérzaj folyamat}
+			\subsection{Fehérzaj folyamat tulajdonságai}
+
+		\section{Harmonikus folyamatok}
+			\subsection{Harmonikus folyamatok tulajdonságai}
+
+		\part{Lineáris folyamatok}
+		\part{Wiener folyamatok}
+\end{document}

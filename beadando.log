@@ -1,0 +1,231 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2023.1.26)  10 APR 2023 15:15
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**"C:/Users/filep/MATLAB Drive/sztocha_beadando/beadando.tex"
+(C:/Users/filep/MATLAB Drive/sztocha_beadando/beadando.tex
+LaTeX2e <2022-06-01> patch level 5
+L3 programming layer <2022-09-28>
+(C:\Users\filep\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(C:\Users\filep\AppData\Local\Programs\MiKTeX\tex/latex/base\size11.clo
+File: size11.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count185
+\c@section=\count186
+\c@subsection=\count187
+\c@subsubsection=\count188
+\c@paragraph=\count189
+\c@subparagraph=\count190
+\c@figure=\count191
+\c@table=\count192
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+)
+(C:\Users\filep\AppData\Local\Programs\MiKTeX\tex/latex/datetime\datetime.sty
+Package: datetime 2015/03/20 v2.60 Date Time Package
+
+(C:\Users\filep\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count193
+)
+(C:\Users\filep\AppData\Local\Programs\MiKTeX\tex/latex/fmtcount\fmtcount.sty
+Package: fmtcount 2020/01/30 v3.07
+
+(C:\Users\filep\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
+)
+(C:\Users\filep\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
+
+(C:\Users\filep\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
+(C:\Users\filep\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
+\XKV@toks=\toks16
+\XKV@tempa@toks=\toks17
+
+(C:\Users\filep\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\keyval.tex))
+\XKV@depth=\count194
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+)) (C:\Users\filep\AppData\Local\Programs\MiKTeX\tex/latex/fmtcount\fcprefix.st
+y
+Package: fcprefix 2012/09/28
+
+(C:\Users\filep\AppData\Local\Programs\MiKTeX\tex/latex/fmtcount\fcnumparser.st
+y
+Package: fcnumparser 2017/06/15
+\fc@digit@counter=\count195
+)) (C:\Users\filep\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks18
+\ex@=\dimen139
+)
+\c@padzeroesN=\count196
+\fc@tmpcatcode=\count197
+\@DT@modctr=\count198
+\@ordinalctr=\count199
+\@orgargctr=\count266
+\@strctr=\count267
+\@tmpstrctr=\count268
+\@DT@loopN=\count269
+\@DT@X=\count270
+)
+(C:\Users\filep\AppData\Local\Programs\MiKTeX\tex/latex/datetime\datetime-defau
+lts.sty
+Package: datetime-defaults 2013/09/10
+)
+\@day=\count271
+\@month=\count272
+\@year=\count273
+\c@HOUR=\count274
+\c@HOURXII=\count275
+\c@MINUTE=\count276
+\c@TOHOUR=\count277
+\c@TOMINUTE=\count278
+\c@SECOND=\count279
+\currenthour=\count280
+\currentminute=\count281
+\currentsecond=\count282
+Package datetime Info: No datetime.cfg file found, using default settings on in
+put line 308.
+\@dtctr=\count283
+\dayofyear=\count284
+\dayofweek=\count285
+LaTeX Info: Redefining \today on input line 736.
+\dt@a=\toks19
+\dt@b=\toks20
+)
+(C:\Users\filep\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+Package: babel 2022/10/04 3.81 The Babel package
+\babel@savecnt=\count286
+\U@D=\dimen140
+\l@unhyphenated=\language79
+
+(C:\Users\filep\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+\bbl@readstream=\read2
+\bbl@dirlevel=\count287
+
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:\Users\filep\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
+ babel
+)
+(C:\Users\filep\AppData\Local\Programs\MiKTeX\tex/latex/babel-hungarian\magyar.
+ldf
+Language: hungarian 2019/01/14 v1.5c Magyar (Hungarian) support for babel
+Package babel Info: Making ` an active character on input line 2819.
+\c@footnote@add=\count288
+\c@footnote@ch=\count289
+))
+(C:\Users\filep\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/hu\babel
+-hungarian.tex
+Package babel Info: Importing font and identification data for hungarian
+(babel)             from babel-hu.ini. Reported on input line 11.
+)
+(C:\Users\filep\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def
+File: l3backend-pdftex.def 2022-09-28 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count290
+\l__pdf_internal_box=\box51
+)
+
+LaTeX Warning: Unused global option(s):
+    [a4pape,draftr].
+
+No file beadando.aux.
+\openout1 = `beadando.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+
+LaTeX Warning: Please use \usepackage{t1enc} with
+               \usepackage[hungarian]{babel}, to get accented chars hyphenated.
+
+
+(C:\Users\filep\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+LaTeX Info: Redefining \cal on input line 497.
+LaTeX Info: Redefining \mit on input line 498.
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 10.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 10.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 10.
+
+[1
+
+
+{C:/Users/filep/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+No file beadando.toc.
+\tf@toc=\write3
+\openout3 = `beadando.toc'.
+
+
+Overfull \hbox (5.57724pt too wide) in paragraph at lines 21--22
+ [] \OT1/cmr/m/n/10.95 A do-ku-men-tum c^^Selja a szto-chasz-ti-kus fo-lya-ma-t
+ok al-kal-maz^^Sasa nev}u t^^Sargyon
+ []
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 27.
+! Undefined control sequence.
+l.32 				Akkor $X: \Omega \to \Bbb
+                                  {R}$ függvényt valószínűségi változ...
+
+? 
+[1]
+Overfull \hbox (15.5145pt too wide) in paragraph at lines 44--45
+\OT1/cmr/m/n/10.95 mo-del-lez^^Ses^^Set ^^Ses el}orejelz^^Ses^^Set. Az ilyen fo
+-lya-ma-tok-ra vo-nat-koz^^Soan meg-hat^^Sarozott
+ []
+
+
+Overfull \hbox (4.17923pt too wide) in paragraph at lines 56--57
+ [] \OT1/cmr/m/n/10.95 Amennyi-ben a k^^?ovet-kez}o felt^^Setelek meg-egyez-nek
+ az egy sz}ukebb ^^Sertelemben
+ []
+
+[2] [3] [4] (beadando.aux) ) 
+Here is how much of TeX's memory you used:
+ 3750 strings out of 475385
+ 66939 string characters out of 2776907
+ 444822 words of memory out of 3000000
+ 25132 multiletter control sequences out of 15000+600000
+ 475386 words of font info for 48 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 70i,7n,76p,1067b,343s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ <C:\Users\filep\AppData\Local\MiKTeX\fonts/pk/ljfo
+ur/jknappen/ec/dpi600\tcrm1095.pk><C:/Users/filep/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/filep/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/filep/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/filep/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/
+filep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C
+:/Users/filep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr1
+0.pfb><C:/Users/filep/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
+/cm/cmr12.pfb><C:/Users/filep/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+amsfonts/cm/cmr17.pfb><C:/Users/filep/AppData/Local/Programs/MiKTeX/fonts/type1
+/public/amsfonts/cm/cmr6.pfb><C:/Users/filep/AppData/Local/Programs/MiKTeX/font
+s/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/filep/AppData/Local/Programs/MiKT
+eX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on beadando.pdf (5 pages, 139990 bytes).
+PDF statistics:
+ 78 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
