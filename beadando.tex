@@ -186,18 +186,218 @@
 						\item $Z(\lambda), -\pi \le \lambda \le \pi$ egy sztochasztikus folyamat, amely zérus várható értékű
 						\item $E(Z(\lambda^{\prime\prime} - Z(\lambda^{\prime}))^2 = G_X(\lambda^{\prime \prime}) -G_X(\lambda^{\prime})$, ha $-\pi \le \lambda^{\prime} < \lambda^{\prime \prime} \le \pi$ 
 					\end{itemize}
-		\section{Diszkrét spektrum}
-
-		\section{Folytonos Spektrum}
 		\section{Becslések}
 			\subsection{Várható érték becslése}
+				\paragraph{}
+					Legyen a várható érték becslése:
+					$$\bar{X} = \cfrac{1}{T} \sum_{i = 1}^{T}X_i$$
+					\begin{itemize}
+						\item $T$ az összes idő megfigyelése
+						\item $X$ a sztochasztikus folyamat.
+					\end{itemize}
+					Mint minden más statisztikai becsléstől ettől is elvárjuk a torzítatlanságot.
+				\subsubsection{Torzítatlansága a várható érték}
+					\paragraph{}
+						$$E(\bar{X}) = \cfrac{1}{T} \sum_{i = 1}^{T}X_i = \cfrac{1}{T} \sum_{i=1}^T \mu_X = \mu_X$$
+						Így látszódik, hogy torzítatlan.
 			\subsection{Kovariancia függvény becslése}
+				\paragraph{}
+					A becsléshez használt összefüggések a következőek:
+					$$
+					\begin{aligned}
+						\hat{R}_{1,k} = \cfrac{1}{T}\sum_{j=1}^{T -|k|}(X_j - \mu_X)(X_{j+|k|} -\mu_X) \\
+						\bar{R}_{1,k} = \cfrac{1}{T-|k|} \sum_{j=1}^{T - |k|}(X_j - \mu_X)(X_{j+ |k|} - \mu_X) 
+					\end{aligned}$$
+					Ahol:
+					\begin{itemize}
+						\item $T$ hosszú folyamatunk van
+						\item $k$ a "késeltetés" két megfigyelés között
+						\item $\mu_X$ a várható érték, ha ez nem ismert érdemes becsülni.
+					\end{itemize}
 		\section{Fehérzaj folyamat}
-			\subsection{Fehérzaj folyamat tulajdonságai}
-
+			\paragraph{}
+				Olyan stacionárius folyamat, amely
+				\begin{itemize}
+					\item korrelálatlan sorozatot alkot
+					\item várható értéke 0
+					\item Minden időpillanatban megegyezik az eloszlása.
+				\end{itemize}
+			\subsection{Fehérzaj folyamat spektrális sűrűségfüggvénye}
+				$$g_\epsilon (\lambda) = \cfrac{1}{2* \pi} \sum_{j = - \infty}^{\infty} R_{\epsilon}(j)e^{-i j \lambda}$$
+			\subsection{standard fehérzaj folyamat}
+				\paragraph{}
+					Olyan fehérzaj folyamat, amelynek a varianciája minden időpontra pontosan 1.
+			\subsubsection{standard fehérzaj folyamat spektrális sűrűségfüggvénye}
+				$$g_\epsilon(\lambda) = \cfrac{1}{2 \pi} \sigma^2_\epsilon, \\\ -\pi \le \lambda \le \pi$$
 		\section{Harmonikus folyamatok}
+			\paragraph{}
+				$$X_t = A_0 + \sum_{i=1}^q (A_i cos(\lambda_i t) + B_i sin(\lambda_i t))$$
+				\begin{itemize}
+					\item $X_t$-t nevezzük harmonikus folyamatnak, ha
+					\item $A_i$ és $B_i$ korrelálatlan [[valószínűségi változó|valószínűségi változók]]
+					\item $A_i$ és $B_i$ [[várható érték|várható értékei]] 0-k
+					\item $VAR(A_0) = \sigma_0^2$
+					\item $VAR(A_i)= VAR(B_i) = \sigma_i^2$
+					\item $\lambda \in \mathbb{R}$, $q \in \mathbb{Z}^+$
+				\end{itemize}
 			\subsection{Harmonikus folyamatok tulajdonságai}
-
+				\paragraph{}
+					\begin{itemize}
+						\item Periodikusak
+						\item csak a két időpont közötti távolságtól függ a két időpont korrelációja
+						\item Gauss eloszlásúak
+						\item nem létezik spektrális sűrűségfüggvénye
+					\end{itemize}
 		\part{Lineáris folyamatok}
+			\paragraph{}
+				Elsőként szeretném szemléltetni a lineáris folyamatok használatát a következő példával:
+			\paragraph{}
+				Tegyük fel, hogy azt szeretnénk vizsgálni, hogy hogyan változnak az egyik tőzsdén jegyzett részvényáraink az idő függvényében. Az idősor analízis esetében a részvényárfolyamokat időpontonként mérjük és rögzítjük, és az időpontok közötti különbségek általában egyenlők.
+			\paragraph{}
+				Az ilyen típusú adatokat legegyszerűbb módon az autokorrelációs függvények segítségével modellezni. Az autokorrelációs függvény egy olyan matematikai eszköz, amely azt mutatja meg, hogy milyen erős az idősorbeli adatok közötti kapcsolat, azaz hogy az előző adatok milyen mértékben hatnak az időpontban mért adatokra.
+			\paragraph{}
+				Az autokorrelációs függvényekből pedig kiszámítható a spektrális sűrűségfüggvény is, amely az idősorbeli adatok frekvenciára vetített változását írja le. Ez azért fontos, mert az idősorbeli adatokban található frekvenciák meghatározzák az adatok jellemzőit, például azt, hogy milyen időtartamú ingadozások jellemzik az adott idősorbeli adatokat.
+			\paragraph{}
+				Ezeket a matematikai eszközöket alkalmazva az idősorbeli adatokat leíró lineáris folyamatokat lehet definiálni. Az ilyen lineáris folyamatok modelljei pedig felhasználhatók az idősorbeli adatok további vizsgálatára, például a trendek, szezonális változások vagy az idősorbeli adatok szabályszerűségeinek feltárására.
+			\paragraph{}
+				Egy ilyen példa egy lineáris folyamatra, amely az idősorbeli adatokat modellezi, lehet az ARIMA (AutoRegressive Integrated Moving Average) modell.
+			\paragraph{}
+				Azt a $X_t$ folyamatot nevezzük lineáris folyamatnak, amely teljesíti a következő:
+				$$X_t = \sum_{s= -\infty}^{\infty} a_s \epsilon_{t-s}$$
+				Ahol:
+				\begin{itemize}
+					\item $X_t$ egy sztochasztikus folyamat.
+					\item $a_s \in \mathbb{R}$ és $\sum_{s = - \infty}^{\infty} a_s^2 < \infty$.
+					\item $\forall \epsilon$ fehérzaj folyamat, $\sigma_\epsilon^2 > 0$.
+					\item $\lim_{m,n \to \infty} E \left(X_t - \sum_{s = -m}^n a_s \epsilon_{t-s} \right)^2 = 0$.
+				\end{itemize}
+
+			\section{Kauzális folyamat}
+				\paragraph{}
+					A kauzális folyamat olyan lineáris folyamat, amely előállítható a következő képen:
+					$$X_t = \sum_{s=0}^\infty a_s \epsilon_{t-s}$$
+					Emellett az $X_t$ csak a múltjától függ. Ezen felül egy lineáris folyamat akkor és csak akkor kauzális folyamat, ha a spektrális sűrűségfüggvénye létezik és teljesül rá a Bochner-Kolmogorov tétel:
+					$$\int_{-\pi}^\pi \ln(g_X(\lambda)) d\lambda > -\infty$$
+					\begin{itemize}
+						\item $g_X$ a spektrális sűrűségfüggvény
+						\item $\lambda$ időbeli változások sebességét leíró paraméter
+					\end{itemize}
+					
+
+				\subsection{Kauzális folyamat spektruma}
+					\paragraph{}
+					\begin{itemize}
+						\item A kauzális folyamat spektruma kauszális: $g_X(\lambda) = 0$ minden $\lambda < 0$ esetén.
+						\item $g_X(0) = \text{var}(X_t)$, azaz a spektrális sűrűségfüggvény értéke a zérus frekvencián megegyezik a folyamat varianciájával.
+						\item A spektrális sűrűségfüggvény Fourier-transzformáltja pozitív mértékű véges mértékű eloszlás.
+						\item Az autokovariancia függvény Fourier-transzformáltja az ún. spektrális eloszlásfüggvény, amelynek integrálja a folyamat varianciájával egyezik meg.
+						\item Ha $X_t$ kauzális és $Y_t = f(X_t)$, ahol $f$ egy lineáris időinvariáns szűrő, akkor $Y_t$ is kauzális és $g_Y(\lambda) = |f(\lambda)|^2 g_X(\lambda)$.
+						\item A kauzális folyamatokat jellemezhetjük az ún. kauzalitási impulzusfüggvényükkel, amely az $X_t$ folyamat egy egység-Dirac impulzus bemenetre adott válaszfüggvénye.
+					\end{itemize}
+			\section{Lineáris szűrő}
+				\paragraph{}
+					Lineáris szűrőt jelölje $L$.
+					$$L(X_t) = \sum_{s = -\infty}^\infty h(t-s)X_s$$
+					
+					\begin{itemize}
+					  \item Lineáris szűrőt jelölje $L$
+					  \item $L(X_t) = \sum_{s = -\infty}^\infty h(t-s)X_s$
+					  \item $X_t$ egy vagy több dimenziós stacionárius folyamat (tágabb értelemben)
+					  \begin{itemize}
+						    \item Van a folyamatnak $R_x(u)$-val definiált kovarianciafüggvénye
+						    \item $g_X(\lambda)$ spektrális sűrűségfüggvény is létezik
+						    \item $E(X_t) \equiv 0$
+					  \end{itemize}
+					  \item $h(t)$ függvény eleget tesz a szűrő koherenciafeltételnek: 
+					  $$\sum_{u = -\infty} ^\infty \sum_{v = -\infty}^\infty h(u) R_X(v-u) h^T(v) < \infty$$
+					\end{itemize}
+
+
+				\subsection{transzfer függvény}
+					\paragraph{}
+						A szűrő koherenciafeltételhez tartozik az úgynevezett transzfer függvény:
+						$$H \left(e^{-i \lambda} \right) = \sum_{t = -\infty}^{\infty} e^{-i t \lambda} h(t)$$
+						\begin{itemize}
+						    \item $H$ a transzfer függvény
+						    \item $\lambda$ az időbeli változások sebességét leíró paraméter.
+						\end{itemize}
+					\paragraph{}
+						Legyen $Y_t = L(X_t)$ stacionárius folyamat, ahol:
+						\begin{itemize}
+						    \item $L$ egy lineáris szűrő
+						    \item $X_t$ egy stacionárius folyamat
+						\end{itemize}
+						
+						Ekkor az $Y_t$ kovarianciafüggvényére fennáll:
+						$$R_Y(r,r+t) = R_Y(t)$$
+						Ahol:
+						\begin{itemize}
+						    \item $r$ a vizsgált időpont
+						    \item $t$ pedig, hogy mennyi időegységre van eltolva a vizsgálat vége az $r$-től
+						\end{itemize}
+					\paragraph{}
+						Az $Y_t$ spektrális sűrűségfüggvényére pedig:
+						\begin{itemize}
+						    \item Több dimenziós esetben a $g_Y(\lambda) = H\left(e^{-i \lambda} \right)g_X(\lambda)H^{T*}\left(e^{-i \lambda} \right)$ összefüggés igaz.
+						    \item Egy dimenziós esetben pedig a $g_Y(\lambda) = g_X(\lambda)\left|H\left(e^{-i \lambda} \right)\right|^2$ összefüggés igaz.
+						\end{itemize}
+						Ahol:
+						\begin{itemize}
+						    \item $g$ a spektrális sűrűségfüggvény
+						    \item $\square^{T*}$ a transzponált, majd konjugált műveletek jelölik.
+						\end{itemize}
+					\paragraph{}
+						$H \left(e^{-i \lambda} \right)$ esetén a kauzális folyamat spektrális sűrűségfüggvénye a
+						$$g_X(\lambda) = \cfrac{\sigma_\epsilon^2}{2 \pi} \left| \sum_{t=0}^\infty a_t e^{-it\lambda}\right|^2$$ lesz.
+			\section{autókorreláció függvény}
+				\paragraph{}
+					Megmutatja, hogy a folyamat időbeli részei mennyire hasonlítanak egymáshoz, mennyire van közös mozgásuk.
+					Legyen $X_t$ stacionáriu] folyamat $R_X(t)$ pedig kovarianciafüggvény, ekkor az autokorrelációs függvényt a következő képen értelmezzük:
+					$$r_X(t) = \dfrac{1}{R_X(0)}R_X(t) = \cfrac{1}{\sigma_X^2}R_X(t)$$.
+				\subsection{Autókorreláció függvény spektruma}
+					\paragraph{}
+						A következőt nevezzük az autokorrelációs függvény spektrumának:
+						$$g_X(\lambda) = \cfrac{1}{2 \pi} \sum_{k = - \infty} ^{\infty} r_X(k) e^{-i * k *\lambda}$$
+						A zaj, az interferencia vagy a periodikus mintázatok kezelésében. A spektrum azonban csak egy részleges képet ad a folyamatról, és egyedül nem elegendő a folyamat jellemzéséhez. Számos más jellemzőnek, mint például az autoregressziós modell paramétereinek, a szűrő paramétereinek vagy a spektrális sűrűségfüggvénynek ismerete szükséges lehet a folyamatok részletes elemzéséhez.
+				\subsection{parciális autokorreláció}
+					\paragraph{}
+						$Z_1, \dots, Z_k$ valószínűségi változók melletti parciális korrelációnak nevezzük a következő összefüggést:
+						$$\rho = \mathrm{CORR}(X - \hat{X}, Y - \hat{Y}) = \frac{\mathrm{COV}(X-\hat{X}, Y - \hat{Y})}{D(X - \hat{X})D(Y - \hat{Y})}$$
+						Ahol:
+						\begin{itemize}
+							\item $X,Y,Z$ valószínűségi változók
+							\item $\hat{X} = \hat{X}(Z_1, \dots, Z_k), \hat{Y} = \hat{Y}(Z_1, \dots, Z_k)$
+							\item $D(X - \hat{X}) > 0, D(Y - \hat{Y}) > 0$.
+						\end{itemize}
+						Megmutatja az $X$ és $Y$ közötti kapcsolat erősségét azután, hogy mindkét változóban kiküszöböltük a $Z$ valószínűségi változók hatását.
+					\subsubsection{parciális autokorreláció stacionárius folyamat esetén}
+						\paragraph{}
+							Azt mutatja meg, hogy két időbeli pontra vonatkozó korreláció mennyiben magyarázható a közöttük lévő időbeli pontok hatásának kiküszöbölésével. Stacionárius folyamatok esetén a parciális autokorreláció különösen fontos, mivel lehetővé teszi számunkra, hogy azonosítsuk a folyamat autoregresszív (AR) modellének paramétereit.
+							$X_t$ és $X_{t-k}$ közötti parciális autokorreláció alatt a következő összefüggést értjük:
+							\[
+							\rho_k = CORR(X_t - \widehat{X}_t, X_{t-k} - \widehat{X}_{t}) = \frac{COV(X_t - \widehat{X}_t, X_{t-k} - \widehat{X}_{t})}{D(X_t - \widehat{X}_t)D(X_{t-k} - \widehat{X}_{t})}
+							\]
+							ahol:
+							\begin{itemize}
+								\item $k \in \mathbb{Z}$,
+								\item $\widehat{X}_t = \widehat{X}_t(X_{t-1}, \dots, X_{t-k+1})$,
+								\item $D(X_t - \hat{X}_t) > 0$ és $D(X_{t-k} - \hat{X}_t) > 0$.
+							\end{itemize}
+
+			\section{AR; MA; ARMA folyamatok}
+				\paragraph{}
+					Ide valami arról, hogy mire való
+				\subsection{AR}
+					\paragraph{}
+						Kibővíteni
+				\subsection{MA}
+					\paragraph{}
+						Ez mi
+				\subsection{ARMA}
+					\paragraph{}
+						A kettő együtt mit jelent
+			\section{karakterisztikus polinom}
+			\section{Yule-Walker egyenletek}
+			\section{Paraméterek becslése}
 		\part{Wiener folyamatok}
 \end{document}
