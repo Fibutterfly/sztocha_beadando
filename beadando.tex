@@ -383,21 +383,151 @@
 								\item $\widehat{X}_t = \widehat{X}_t(X_{t-1}, \dots, X_{t-k+1})$,
 								\item $D(X_t - \hat{X}_t) > 0$ és $D(X_{t-k} - \hat{X}_t) > 0$.
 							\end{itemize}
-
+			
 			\section{AR; MA; ARMA folyamatok}
 				\paragraph{}
 					Ide valami arról, hogy mire való
 				\subsection{AR}
 					\paragraph{}
-						Kibővíteni
-				\subsection{MA}
+						A p-edrendű autoregresszív modellnek a következőt hívjuk:
+						$$x_t = \sum_{k=1}^{p}(c_k x_{t-k}) + \epsilon_t$$
+						\begin{itemize}
+							\item $x_t$ a $t.$ időpontban lévő véletlen stacionárius folyamat értéke
+							\item $c_i$ az $i.$ időponthoz tartozó autoregressziós együttható
+							\item $p$ az autoregressziós modell rendje
+							\item $\epsilon_t$ a $t.$ időponthoz tartozó diszkrét fehérzaj.
+						\end{itemize}
+					\subsubsection{autoregressziós együttható}
+						\paragraph{}
+							Az autoregressziós együttható az autoregresszív modellben a korábbi időpontok értékeinek súlyozására használt együttható.
+				\subsection{MA - Mozgóátlag modell}
 					\paragraph{}
-						Ez mi
+						EZ NAGYON NEM TETSZIK
+						A mozgóátlag szűrőnek a következőt szokás hívni:
+						$$x_t = d(B) \epsilon_t$$
+						Ahol:
+						\begin{itemize}
+							\item $d(B) = \sum_{i=0}^\infty d_iB^i$
+							\begin{itemize}
+								\item $B^n(x_t) = x_{t-n}$
+							\end{itemize}
+							\item $\epsilon_t$ pedig [[Fehérzaj folyamat|fehérzaj]]
+							\item $x_t=\sum_{k = 1}^{q}(d_{k}\epsilon_{t-k})+\epsilon_t$
+						\end{itemize}
+					\subsubsection{Mozgóátlag együttható}
+						A mozgóátlag együtthatók az előző hibák lineáris kombinációját jelzik, amelyek súlyozásával a jelenlegi értéket becsülik.
 				\subsection{ARMA}
 					\paragraph{}
-						A kettő együtt mit jelent
-			\section{karakterisztikus polinom}
-			\section{Yule-Walker egyenletek}
-			\section{Paraméterek becslése}
+						Az ARMA folyamat előállítása az mozgóátlag modell (MA) és az Autoregresszív modell (AR) segítségével történik:
+						$$AR|MA(p,q) = \sum_{k = 1}^p (c_k x_{t-k}) + \sum_{k=1}^q(d_k \epsilon_{t-k}) + \epsilon_t$$
+						\begin{itemize}
+							\item $p,q \in \mathbb{Z}^+$
+							\begin{itemize}
+								\item $p$ az Autoregresszív modell (AR) rendje
+								\item $q$ a mozgóátlag modell (MA) rendje
+							\end{itemize}
+							\item $c_k$ a $k.$ időponthoz tartozó autoregressziós együttható
+							\item $x_k$ a $k.$ időponthoz tartozó tágabb értelemben stacionárius folyamat értéke
+							\item $d_k$ a $k.$ időponthoz tartozó mozgóátlag együttható
+							\item $\epsilon_t$ fehérzaj
+							\begin{itemize}
+								\item várható értéke 0
+								\item szórása nagyobb, mint 1
+							\end{itemize}
+						\end{itemize}
+				\subsection{karakterisztikus polinom}
+					\paragraph{}
+						Egyáltalán nem értem, csak annyit, hogy van a Laplace traszformálás: $F(s) = \int_0^\infty e^{-st}f(t)dt$ és ebből jönnek ki a $z$ változók a polinomhoz, ami segít előállítani a $P(z) = 1-\sum_{k=1}^{p} a_k z^k$. 
+					\paragraph{}
+						Ha ennek a gyökei az egységkörön belül helyezkednek el, akkor ez egy kauzális folyamat.
+				\subsection{Yule-Walker egyenletek}
+					\paragraph{}
+						A Yule-Walker egyenletrendszer az autoregresszív modell paramétereinek becslésére használt lineáris egyenletekből álló rendszer, ami a következő formában van:
+						
+						$$\gamma = R_p * c$$
+						
+						\begin{itemize}
+						\item $\gamma$ az autokorrelációs függvény a $k.$ értékeit tartalmazza
+							$$\gamma = \left[ \begin{array}{c}
+							\gamma_1 \\ \gamma_2 \\ \vdots \\ \gamma_p
+							\end{array}\right]$$
+						\item $R_p$ szintén az autokorrelációs függvény $k.$ értékeit tartalmazza egy kicsit másmilyen formátumban.
+							$$R_p = \left[\begin{array}{cccccc}
+							\gamma(0) & \gamma(1) & \gamma(2) & \dots & \gamma(p-1) \\
+							\gamma(1) & \gamma(0) & \gamma(1) & \dots & \gamma(p-2) \\
+							\gamma(2) & \gamma(1) & \gamma(0) & \dots & \gamma(p-3) \\
+							\vdots & \vdots & \vdots & \ddots & \vdots \\
+							\gamma(p-1) & \gamma(p-2) & \gamma(p-3) & \dots & \gamma(0)
+							\end{array}\right]$$
+						\begin{itemize}
+							\item $\gamma(0)$ általában $1$
+						\end{itemize}
+						\item $c$ az autoregressziós együtthatók, ezeket szeretnénk becsülni.
+							$$c = \left[\begin{array}{c}
+							c_1 \\ c_2 \\ \vdots \\ c_p
+							\end{array}\right]$$
+						\end{itemize}
+				\subsection{Paraméterek becslése}
+					\paragraph{}
+						Az ARMA modellek paraméterbecslési módszerei közé tartoznak:
+						\begin{itemize}
+							\item \textbf{AIC (Akaike információs kritérium)}: Ez a módszer arra törekszik, hogy egy egyszerű, de hatékony modellt találjon, amely a legjobban illeszkedik az adathalmazhoz. Az AIC egy információs mutató, amely a modell illeszkedését és a modell bonyolultságát egyaránt figyelembe veszi. Az AIC értéke alapján két vagy több modell közül választhatunk, ahol az alacsonyabb érték jobb illeszkedést jelent.
+							\item \textbf{BIC (Bayes információs kritérium)}: Ez a módszer hasonló az AIC-hez, de a modell bonyolultságát még jobban figyelembe veszi. A BIC értéke alapján választhatunk a különböző modellek közül, ahol az alacsonyabb érték jelzi a jobb illeszkedést.
+							
+							\item \textbf{Maximum likelihood (maximum valószínűség)}: Ez a módszer az ARMA modell paramétereinek becslésére szolgál. A maximum likelihood módszer az a feltevés, hogy az adathalmaz az ARMA modellből származik, és az ARMA modell paramétereinek becslése olyan értékeket keres, amelyek a lehető legjobban magyarázzák az adatokat.
+							
+							\item \textbf{Mínimális négyzetek módszere}: Ez a módszer az AR modell paramétereinek becslésére szolgál. A módszer az AR modell paramétereit úgy becsüli meg, hogy minimalizálja a modell és az adatok közötti négyzetes eltérést. Ez a módszer egyszerű és könnyen alkalmazható, de csak az AR modellekhez alkalmazható.
+
+					\end{itemize}
 		\part{Wiener folyamatok}
+			\paragraph{}
+				Akkor nevezünk egy folyamatot Wiener folyamatnak ($W(t), t\ge 0$), ha következő tulajdonságokat teljesítik:
+				\begin{itemize}
+					\item Független növekményű Gauss-folyamat
+					\item Trajektóriái 1 valószínűséggel folytonosak
+					\item $W(0) = 0$
+					\item Várható értéke 0 minden $t$-re
+					\item $VAR(W(t)) = \sigma^2 * t$
+					\item $t$ időváltozó, $t \ge 0$
+				\end{itemize}
+			\section{Standard Wiener folyamat}
+				\paragraph{}
+					Amennyiben a Wiener folyamat teljesíti, hogy $\sigma = 1$ akkor azt standard Wiener folyamatnak nevezzük.
+			\section[Wiener-folyamat konstrukciója]{Konstrukciója}
+				\paragraph{}
+					A Wiener folyamat konstrukciójának általános alakja:
+					$$W(t) = \sum_{k=0}^{\infty}X_k \int_0^t \phi_k (u) du$$
+					\begin{itemize}
+						\item $t$ az idő változó
+						\begin{itemize}
+							\item $t$-t elegendő $[0,1]$ intervallumon megadni, mert független növekményű Gauss folyamatról van szó
+						\end{itemize}
+						\item $X_k \sim N(0,1)$
+						\item $\phi$ ortonormált bázis a $\mathcal{L}^2[0,1]$ L2 függvénytéren
+					\end{itemize}
+				\subsection{Wiener-féle konstrukció}
+					\paragraph{}
+						Egy másik konstrukciója a Wiener folyamatnak a Wiener-féle konstrukció:
+						$$W(t) = \cfrac{t}{\sqrt{\pi}} X_0 + \sqrt{2} \sum_{n=1}^\infty \sum_{k = 2^{n-1}}^{2^n-1}\sqrt{\cfrac{2}{\pi}}\cfrac{sin(k*t)}{k} X_k$$
+						\begin{itemize}
+							\item $t$ időváltozó
+							\item $X_k$ a $k.$ időpontban lévő sztochasztikus folyamat
+						\end{itemize}
+				\subsection{Lévy-Ciesielski-féle konstrukció}
+					\paragraph{}
+						asdadsads
+
+			\section[Wiener-folyamat trajektóriáinak viselkedése]{Trajektóriák viselkedése}
+				\paragraph{}
+					asdasd
+			\section{Ito-féle sztochasztikus integrál}
+				\paragraph{}
+					bemutatása
+				\subsection{Ito-féle sztochasztikus integrál tulajdságai}
+			\section{sztochasztikus differenciál egyenlet}
+				\paragraph{}
+					Elég csak a fogalmát bemutatni
+
+
+
 \end{document}
