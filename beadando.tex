@@ -767,10 +767,100 @@
 					Amennyiben igaz, hogy $\int_{t_0}^t G_n(s) dW_s$ által van definiálva az érték, akkor igaz az is, hogy
 					$${st. \lim_{n \to \infty}} \int_{t_0}^t G_n(s) dW_s = I(G)$$
 					ahol: $I(G)$ a $\{G_n\}$ sorozat megválasztásától független valószínűségi változó.
-			\section{sztochasztikus differenciál egyenlet}
+			\section{Sztochasztikus integrálás}
 				\paragraph{}
-					Elég csak a fogalmát bemutatni
-
-
-
+					$$\begin{aligned}
+						\int_{t_0}^t G(s,\omega) dW_s(\omega)
+					\end{aligned}$$
+					ahol:
+						\begin{itemize}
+						\item $t_0, t$ az intervallum amin értelmezzük az integrálást
+						\item $G \in M_2^{d,m}[t_0,t]$
+						\item $W_s(\omega)$ kifejezés egy adott $\omega$ minta esetén az $s$ időpillanatban mért standard Wiener-folyamat értékét jelöli.
+						\item $s$ az időpillanat, amiben vizsgálódunk.
+					\end{itemize}.
+					\begin{itemize}
+						\item Megvizsgáljuk, hogy $G$ lépcsős függvény-e, tehát létezik-e olyan felbontás, amelyre igaz az, hogy $t_0 < t_1 < \dots < t_n = t$ és $G(s) = G(t_{t-1}) \forall s \in [t_{i-1},t_i[, i=1,\dots,n$, ennek tulajdonságai az Ito lemmában vannak leírva.
+						\item Megkeressük a $G_m$ sorozatot, amely eleget tesz a Wiener-Paley lemmának.
+						\item Majd minden függvényt átalakítunk úgy, hogy eleget tegyen a Doob általánosított egyenlőtlenségének.
+						\item Ellenőrizzük, hogy eleget tesz-e a Doob-Meyer tételnek.
+						\item Elvégezzük rajta az Ito-féle sztochasztikus integrálást.
+					\end{itemize}
+			\section{Sztochasztikus differenciál}
+				\paragraph{}
+					$$X_t(\omega) = X_{t_s}(\omega) + \int_{t_0}^t f(s, \omega)ds + \int_{t_0}^t G(s, \omega) dW_s(\omega)$$
+					
+					Ahol:
+					\begin{itemize}
+						\item $W_t$ egy $m$ dimenziós Wiener-folyamat
+						\item $G \in M_2^{d,m}[t_0, T]$
+						\item $X_{t_s}$ sztochasztikus folyamat, amely független a $W_t - W_{t_0}$ zajtól, $t \ge t_0$
+						\item $f$ egy függvény, amely független a $W_t - W_{t_0}$ zajtól, $t \ge t_0$, és $R^d$ értékkészletű. A jövőtől nem függő, és $1$ valószínűséggel teljesül, hogy $\int_{t_0}^T |f(s, \omega)|ds < \infty$.
+						\item $\omega$ a mintatér eleme, azaz egy adott kimenet az eseményteret alkotó $\sigma$-algebra egy eleme
+						\item $s$ a függvény értékelésének az időpillanata.
+						\item $d$ a véges differenciálás lépése.
+						\item $m$ az a Wiener-folyamat dimenziója. Ha egy Wiener-folyamat $m$ dimenziós, akkor azt jelenti, hogy az $m$ darab független standard Wiener-folyamatot összefűztük egy $m$ dimenziós vektorban.
+					\end{itemize}
+					\subsection{Sztochasztikus differenciál jelölése és értelmezése}
+						\paragraph{}
+							$$dX_t = f(t)dt + G(t) dW_t = fdt + G dW$$
+							$$X_t - X_s = \int_s^t f(u)du + \int_s^t G(u)dW_u$$
+					\subsection{Ito lemma sztochasztikus differenciálegyenletekre}
+						\paragraph{}
+							$$
+							\begin{aligned}
+								\dfrac{\delta}{\delta t}u(t,x)&=u_t& \\
+								\dfrac{\delta}{\delta x_i}u(t,x)&= u_{x_i} & x = (x_1, \dots, x_d) \\
+								\dfrac{\delta^2}{\delta x_i \delta x_j} u(t,x) &= u_{x_i x_j} & i,j\le d
+							\end{aligned}
+							$$
+							Ahol:
+							\begin{itemize}
+								\item $u:(t,x) \to \mathbb{R}^k$
+								\begin{itemize}
+									\item folytonos
+									\item minden $k$ dimenziós vektorértékű parciális deriváltjai is folytonosak
+									\end{itemize}
+									\item $t \in [t_0, T]$
+									\item $x \in \mathbb{R}^d$.
+							\end{itemize}
+						\paragraph{}
+							Legyen a következő sztochasztikus differenciál egyenlet:
+							$$d X_t = f(t)dt + G(t) d W_t$$
+							ahol:
+							\begin{itemize}
+								\item $X_t$ az $d$ dimenziós sztochasztikus folyamat $[t_0, T]$-ben
+								\item $W_t$ pedig $m$ dimenziós Wiener-folyamat.
+							\end{itemize}
+						\paragraph{}
+							Akkor tudjuk értelmezni a
+							$$Y_t = u(t, X_t)$$
+							$k$ dimenziós folyamatot. Amelynek a kezdeti értéke $Y_{t_0} =u(t_0,X_{t_0})$.
+							$$
+							\begin{aligned}
+								Y_t = u(t, X_t) \\
+								Y_{t_0} =u(t_0,X_{t_0}) \\
+								d Y_t = & \bigg[ u_t(t, X_t) + u_x(t,X_t) * f(t) + \\
+								&+ \dfrac{1}{2} * \sum_{i=1}^d \sum_{j=1}^d u_{x_i, x_j}(t,X_t)  (*G(t)*G(t)^\prime_{ij})
+								\bigg]dt + \\
+								&+u_x(t,X_t)*G(t) dW_t
+							\end{aligned}
+							$$.
+						\paragraph{}
+							Ezt írhatjuk egy kicsit egyszerűbb formában:
+							$$
+							\begin{aligned}
+								d Y_t = & \bigg[ u_t(t, X_t) + u_x(t,X_t) \cdot f(t) + \\
+								&+ \dfrac{1}{2} \cdot tr(G \cdot G^\prime \cdot u_{xx})
+								\bigg]dt + \\
+								&+u_x(t,X_t) \cdot G(t) dW_t \\
+								tr =& \sum_{i=1}^d \sum_{j=1}^d u_{x_i, x_j}(t,X_t)  \cdot (G(t) \cdot G(t)^\prime)_{ij}
+							\end{aligned}
+							$$
+							Ahol:
+							\begin{itemize}
+								\item $u_x = (u_{x1}, \dots, u_{xk})$ $k \times d$ méretű mátrix
+								\item $u_{x_i x_j}$ pedig $k$ dimenziós oszlopvektor
+								\item $u_{xx} = (u_{x_i x_j})$ $d \times d$ méretű mátrix, amelynek elemei $k$ dimenziós vektorok.
+							\end{itemize}
 \end{document}
