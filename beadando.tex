@@ -20,7 +20,7 @@
 	\tableofcontents
 	\section*{Bevezetés}
 		\paragraph{}
-			A dokumentum célja a sztochasztikus folyamatok alkalmazása nevű tárgyon tanult, kiemelt elemek demonstrációja. A demonstráció MATLAB könyvtár elkészítésével történik. A könyvtárnak a célja, hogy szimbolikus matematikai eszközökkel a folyamatokat bemutassa. A könyvtárnak nem célja a semmilyen informatikai optimalizáltságot megvalósítani.
+			A dokumentum célja a sztochasztikus folyamatok alkalmazása nevű tárgyon tanult, kiemelt elemek bemutatása.
 	\part{Stacionárius folyamatok}
 		\section{Alapvető definíciók}
 			\subsection{Valószínűségi változó}
@@ -178,6 +178,29 @@
 					A Dirac-féle delta függvény egy olyan matematikai objektum, amely egy függvényként viselkedik, de a hagyományos függvényekkel szemben a végtelen sok helyen 0 kivételével 0 értéket vesz fel. Formálisan, ha $f(x)$ egy integrálható függvény, akkor a Dirac-delta függvényt ($\delta(x)$) a következőképpen definiáljuk:
 					$$\int_{- \infty}^{\infty}f(x)\delta(x - x_0) dx = f(x_0)$$
 					Ez azt jelenti, hogy a Dirac-delta függvény egy olyan függvény, amely az integrál szempontjából viselkedik, mint a végtelenül keskeny, végtelenül magas csúcs, amelynek területe 1. Azonban, a Dirac-delta függvény matematikailag nem egy függvény a hagyományos értelemben, hanem egy úgynevezett "eloszlás". Ez azt jelenti, hogy a Dirac-delta függvény integrálható más függvényekkel, és a fenti egyenlet alapján értelmeztük az értékét egy adott pontban.
+
+			\subsection{Karakterisztikus függvény}
+				\paragraph{}
+					$$\phi_X(s) = E(e^{i*s*X}) = E(cos(sX) + i*sin(s*X))$$
+					Ahol:
+					\begin{itemize}
+						\item $s \in \mathbb{R}$
+						\item $i$ a képzeletbeli szám
+						\item $X$ valószínűségi változó
+					\end{itemize}.
+				\paragraph{}
+					Ezt előtudjuk állítani a következőképpen:
+					$$\phi_X(s) = \int_{- \infty}^\infty e^{i*s*x} dF_X (x)$$.
+					Ezt diszkrét és folytonos esetben a következőképpen fejezzük ki:
+					$$\phi_X (s) = \sum_{k=0}^\infty p_k e^{i* x_k*s}$$
+					$$\phi_X(s) = \int_{- \infty}^\infty e^{i*x*s} f_X(x)dx$$.
+				\subsubsection{Karakterisztikus függvény tulajdonságai}
+					\begin{itemize}
+						\item Akkor és csak akkor valós, ha az eloszlás szimmetrikus
+						\item Ha létezik $k$. momentum, akkor a karakterisztikus függvény $k$-szor deriválható a $0$ pontban
+						\item $E(X^k) = \dfrac{\phi_X^{(k)} (0)}{i^k}$
+						\item Független valószínűségi változók összességének karakteriksztus függvénye megegyezik a karakterisztikus függvényeik szorzatával
+					\end{itemize}.
 		\section{Stacionárius folyamatok}
 			\paragraph{}
 				A stacionárius folyamatok olyan valószínűségi folyamatok, amelyeknek a statisztikai tulajdonságai nem változnak az idő múlásával. Az ilyen folyamatok esetében a várható érték és a kovariancia függvénye nem függ az időtől, vagyis az idősor jellege nem változik az idő múlásával.
@@ -311,8 +334,8 @@
 				$$X_t = A_0 + \sum_{i=1}^q (A_i cos(\lambda_i t) + B_i sin(\lambda_i t))$$
 				\begin{itemize}
 					\item $X_t$-t nevezzük harmonikus folyamatnak, ha
-					\item $A_i$ és $B_i$ korrelálatlan [[valószínűségi változó|valószínűségi változók]]
-					\item $A_i$ és $B_i$ [[várható érték|várható értékei]] 0-k
+					\item $A_i$ és $B_i$ korrelálatlan valószínűségi változók
+					\item $A_i$ és $B_i$ várható értékei 0-k
 					\item $VAR(A_0) = \sigma_0^2$
 					\item $VAR(A_i)= VAR(B_i) = \sigma_i^2$
 					\item $\lambda \in \mathbb{R}$, $q \in \mathbb{Z}^+$
@@ -329,9 +352,9 @@
 			\paragraph{}
 				Elsőként szeretném szemléltetni a lineáris folyamatok használatát a következő példával:
 			\paragraph{}
-				Tegyük fel, hogy azt szeretnénk vizsgálni, hogy hogyan változnak az egyik tőzsdén jegyzett részvényáraink az idő függvényében. Az idősor analízis esetében a részvényárfolyamokat időpontonként mérjük és rögzítjük, és az időpontok közötti különbségek általában egyenlők.
+				Tegyük fel, hogy azt szeretnénk vizsgálni, hogy hogyan változnak az egyik tőzsdén jegyzett részvények árai az idő függvényében. Az idősor analízis esetében a részvényárfolyamokat időpontonként mérjük és rögzítjük, és az időpontok közötti különbségek általában egyenlők.
 			\paragraph{}
-				Az ilyen típusú adatokat legegyszerűbb módon az autokorrelációs függvények segítségével modellezni. Az autokorrelációs függvény egy olyan matematikai eszköz, amely azt mutatja meg, hogy milyen erős az idősorbeli adatok közötti kapcsolat, azaz hogy az előző adatok milyen mértékben hatnak az időpontban mért adatokra.
+				Az ilyen típusú adatokat legegyszerűbb az autokorrelációs függvények segítségével modellezni. Az autokorrelációs függvény egy olyan matematikai eszköz, amely azt mutatja meg, hogy milyen erős az idősorbeli adatok közötti kapcsolat, azaz hogy az előző adatok milyen mértékben hatnak az időpontban mért adatokra.
 			\paragraph{}
 				Az autokorrelációs függvényekből pedig kiszámítható a spektrális sűrűségfüggvény is, amely az idősorbeli adatok frekvenciára vetített változását írja le. Ez azért fontos, mert az idősorbeli adatokban található frekvenciák meghatározzák az adatok jellemzőit, például azt, hogy milyen időtartamú ingadozások jellemzik az adott idősorbeli adatokat.
 			\paragraph{}
@@ -421,7 +444,7 @@
 						Ahol:
 						\begin{itemize}
 						    \item $g$ a spektrális sűrűségfüggvény
-						    \item $\square^{T*}$ a transzponált, majd konjugált műveletek jelölik.
+						    \item a $*$ jelölés transzponálást, majd konjugálás műveletek jelölik.
 						\end{itemize}
 					\paragraph{}
 						$H \left(e^{-i \lambda} \right)$ esetén a kauzális folyamat spektrális sűrűségfüggvénye a
@@ -463,7 +486,15 @@
 			
 			\section{AR; MA; ARMA folyamatok}
 				\paragraph{}
-					Ide valami arról, hogy mire való
+					Az AR (AutoRegressive), MA (Moving Average) és ARMA (AutoRegressive Moving Average) folyamatok idősorok modellezésére szolgálnak.
+				\paragraph{Az AR folyamat}
+					egy olyan idősor-modell, amelyben az adott időpillanatban megfigyelt érték a korábbi értékek lineáris kombinációja, azaz önmagától és korábbi értékektől függ. Az AR folyamatot az autoregresszió paramétere jellemzi.
+				\paragraph{Az MA folyamat}
+					esetén az aktuális időpillanatban megfigyelt érték a korábbi időpillanatok hibáinak lineáris kombinációja. Az MA folyamatot a mozgóátlag paramétere jellemzi.
+				\paragraph{Az ARMA folyamat}
+					egy olyan idősor-modell, amelyben az aktuális érték az előző értékek és a korábbi hibák kombinációjából származik. Az ARMA folyamatot az autoregresszió és a mozgóátlag paraméterei jellemzik.
+				\paragraph{}
+					Az AR, MA és ARMA modellek gyakran használtak idősorok elemzésére, és számos területen felhasználhatóak, mint például a pénzügyekben, az epidemiológiában, az energia- és a meteorológiai előrejelzésekben.
 				\subsection{AR}
 					\paragraph{}
 						A p-edrendű autoregresszív modellnek a következőt hívjuk:
@@ -479,18 +510,15 @@
 							Az autoregressziós együttható az autoregresszív modellben a korábbi időpontok értékeinek súlyozására használt együttható.
 				\subsection{MA - Mozgóátlag modell}
 					\paragraph{}
-						EZ NAGYON NEM TETSZIK
-						A mozgóátlag szűrőnek a következőt szokás hívni:
-						$$x_t = d(B) \epsilon_t$$
+						A mozgóátlag modellnek a következőt szokás hívni:
+						$$X_t = \mu + \epsilon_t + \sum_{k = 1}^q d_k*\epsilon_{t-k}$$
 						Ahol:
 						\begin{itemize}
-							\item $d(B) = \sum_{i=0}^\infty d_iB^i$
-							\begin{itemize}
-								\item $B^n(x_t) = x_{t-n}$
-							\end{itemize}
-							\item $\epsilon_t$ pedig [[Fehérzaj folyamat|fehérzaj]]
-							\item $x_t=\sum_{k = 1}^{q}(d_{k}\epsilon_{t-k})+\epsilon_t$
-						\end{itemize}
+							\item $X_t$ az időpillanat $t$-beli megfigyelt érték
+							\item $\mu$ a várható érték
+							\item $\epsilon_t$ fehér zaj, azaz $\epsilon_t \sim WN(0, \sigma^2)$
+							\item $d_k$ a mozgóátlag paraméterei, melyek meghatározzák a késleltetett fehér zaj lineáris kombinációját
+						\end{itemize}.
 					\subsubsection{Mozgóátlag együttható}
 						A mozgóátlag együtthatók az előző hibák lineáris kombinációját jelzik, amelyek súlyozásával a jelenlegi értéket becsülik.
 				\subsection{ARMA}
@@ -512,11 +540,16 @@
 								\item szórása nagyobb, mint 1
 							\end{itemize}
 						\end{itemize}
-				\subsection{karakterisztikus polinom}
+				\subsection{ARMA modell karakterisztikus polinomja}
 					\paragraph{}
-						Egyáltalán nem értem, csak annyit, hogy van a Laplace traszformálás: $F(s) = \int_0^\infty e^{-st}f(t)dt$ és ebből jönnek ki a $z$ változók a polinomhoz, ami segít előállítani a $P(z) = 1-\sum_{k=1}^{p} a_k z^k$. 
+						Az ARMA folyamat karakterisztikus függvénye előáll a modell autoregresszív és mozgóátlag polinomjainak karakterisztikus függvényeinek szorzataként:
+						$$\phi_{ARMA}(s) = \frac{\phi_{AR}(s)}{\theta_{MA}(s)}$$
+						Ahol $\phi_{AR}(s)$ az autoregresszív polinom karakterisztikus függvénye, $\theta_{MA}(s)$ pedig a mozgóátlag polinom karakterisztikus függvénye. Az autoregresszív és mozgóátlag polinom karakterisztikus függvényei az alábbi módon adódnak:
+						$$\phi_{AR}(s) = 1 - \sum_{i=1}^p \phi_i e^{-is}$$
+						$$\theta_{MA}(s) = 1 + \sum_{i=1}^q \theta_i e^{-is}$$
+						Ahol $p$ az autoregresszív polinom fokszáma, $q$ pedig a mozgóátlag polinom fokszáma.
 					\paragraph{}
-						Ha ennek a gyökei az egységkörön belül helyezkednek el, akkor ez egy kauzális folyamat.
+						Az ARMA modell karakterisztikus egyenletének megoldásai - amelyek a karakterisztikus függvény gyökei - a modell stabilitását határozzák meg, és ezek a gyökök az egységkörön lehetnek. Ha az összes gyök az egységkörön belül van, akkor az ARMA modell stabil, vagyis a modell hosszú távon is kiszámítható,tehát kauzális folyamat míg ha van gyök az egységkörön kívül, akkor az ARMA modell instabil, és a modell hosszú távon nem kiszámítható.
 				\subsection{Yule-Walker egyenletek}
 					\paragraph{}
 						A Yule-Walker egyenletrendszer az autoregresszív modell paramétereinek becslésére használt lineáris egyenletekből álló rendszer, ami a következő formában van:
