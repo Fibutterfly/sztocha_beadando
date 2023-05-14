@@ -1,10 +1,10 @@
-\documentclass[11pt,a4pape,draftr]{article}
+\documentclass[11pt,a4paper]{article}
 	\usepackage[iso]{datetime}
 	\usepackage[hungarian]{babel}
 	\usepackage{amssymb}
 	\usepackage{amsmath}
 
-	\title{Nemlineáris egyenletrendszerek megoldása}
+	\title{Sztochasztikus folyamatok és alkalmazásaik}
 	\date{\today}
 	\author{Filep Illés Attila}
 
@@ -175,7 +175,7 @@
 					\end{itemize}
 			\subsection{Dirac Delta}
 				\paragraph{}
-					A Dirac-féle delta függvény egy olyan matematikai objektum, amely egy függvényként viselkedik, de a hagyományos függvényekkel szemben a végtelen sok helyen 0 kivételével 0 értéket vesz fel. Formálisan, ha $f(x)$ egy integrálható függvény, akkor a Dirac-delta függvényt ($\delta(x)$) a következőképpen definiáljuk:
+					A Dirac-féle delta függvény egy olyan matematikai objektum, amely egy függvényként viselkedik, de a hagyományos függvényekkel szemben a végtelen sok helyen 0 értéket vesz fel, kivéve a 0 helyen. Formálisan, ha $f(x)$ egy integrálható függvény, akkor a Dirac-delta függvényt ($\delta(x)$) a következőképpen definiáljuk:
 					$$\int_{- \infty}^{\infty}f(x)\delta(x - x_0) dx = f(x_0)$$
 					Ez azt jelenti, hogy a Dirac-delta függvény egy olyan függvény, amely az integrál szempontjából viselkedik, mint a végtelenül keskeny, végtelenül magas csúcs, amelynek területe 1. Azonban, a Dirac-delta függvény matematikailag nem egy függvény a hagyományos értelemben, hanem egy úgynevezett "eloszlás". Ez azt jelenti, hogy a Dirac-delta függvény integrálható más függvényekkel, és a fenti egyenlet alapján értelmeztük az értékét egy adott pontban.
 
