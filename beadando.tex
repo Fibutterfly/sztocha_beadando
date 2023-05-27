@@ -31,7 +31,7 @@
 					\item $x \in \Bbb{R}$
 					\item $\mathcal{A}$ az $\Omega$ részhalmazaiból alkotott esemény $\sigma$-algebrája (tehát $(\Omega, \mathcal{A})$ mérhető tér)
 				\end{itemize}
-				Akkor $X: \Omega \to \Bbb{R}$ függvényt valószínűségi változónak hívunk.
+				Akkor $X: \Omega \to \Bbb{R}$ mérhető függvényt valószínűségi változónak hívunk.
 			\subsection{Sztochasztikus folyamat}
 				\paragraph{}
 					A sztochasztikus folyamat (vagy véletlen folyamat) egy olyan matematikai modell, amely egy vagy több időfüggő véletlen változó által létrehozott folyamatot ír le. A sztochasztikus folyamatok olyan rendszerek leírására szolgálnak, amelyekben a jövő állapota részben véletlenszerűen határozza meg a múlt és a jelen állapotát.
@@ -43,12 +43,11 @@
 					A sztochasztikus folyamatok kompatibilitási feltételei a következők:
 					\begin{itemize}
 					   \item Az időpillanatok száma felsorolható, véges vagy végtelen, de számontartható.
-					   \item Az időpillanatok sorozata szigorúan növekvő, azaz $t_1 < t_2 < \cdots < t_n$ vagy $t_1 < t_2 < \cdots < t_{\infty}$.
-					   \item Az időpillanatok közötti időközök meghatározottak és végesek vagy végtelenek.
+					   \item Az időpillanatok sorozata szigorúan növekvő, azaz $t_1 < t_2 < \cdots < t_n$.
+					   \item Az időpillanatok közötti időközök meghatározottak és végesek.
 					   \item A folyamat értékei véletlenszerűek, és általában valószínűségi változóként vannak definiálva.
-					   \item A folyamat értékei időfüggők, és az időbeli elmozdulásokkal szembeni szimmetriára vonatkozó korlátozásokat kell teljesítenie. Például a stacionárius folyamatok esetében az eloszlások nem változnak az idő múlásával, és az átlag és szórás időfüggetlen.
+					   \item A folyamat értékei időfüggők. Stacionárius folyamatok esetében az eloszlások nem változnak az idő múlásával, és az várható érték időfüggetlen.
 					\end{itemize}
-					Ezen kívül a sztochasztikus folyamatoknál általában szükséges az ergodicitás feltétele, amely azt jelenti, hogy a folyamat minden pillanatban eléri minden lehetséges állapotát az idő végtelen futamán. Ez fontos feltétele a statisztikai tulajdonságok meghatározásának, mert lehetővé teszi a folyamat várható értékének becslését a mintavételezés révén.
 			\subsection{Várható érték}
 				\paragraph{}
 					Lényegében az első (centrális) momentum, egy funkciónál.
@@ -81,7 +80,7 @@
 				\subsubsection{Kovariancia függvény tulajdonságai}
 					\begin{itemize}
 					\item Additivitás: Ha $X$ és $Y$ véletlen változók és $a$ és $b$ valós számok, akkor a kovarianciafüggvény additív, azaz:
-					$$cov(aX + bY, Z) = a_cov(X, Z) + b_cov(Y, Z)$$
+					$$cov(aX + bY, Z) = a*cov(X, Z) + b*cov(Y, Z)$$
 					
 					\item Szimmetria: A kovarianciafüggvény szimmetrikus, azaz
 					$$cov(X,Y) = cov(Y,X)$$
@@ -93,34 +92,31 @@
 					
 					$$cov(X, X) \ge 0$$
 					
-					Ha a két változó független, akkor az egyenlőség akkor és csak akkor áll fenn, ha az $X$ állandó.
+					Ha a két változó állandó, akkor az egyenlőség akkor és csak akkor áll fenn, ha az $X$ állandó.
 					
-					\item Normálás: Ha $X$ és $Y$ normális eloszlásúak, akkor a kovarianciafüggvény teljesen meghatározza a két változó közötti kapcsolatot.
+					\item Ha $X$ és $Y$ együttesen normális eloszlásúak, akkor a kovarianciafüggvény teljesen meghatározza a két változó közötti kapcsolatot.
 					
 					\item Két független változó kovarianciája nulla: Ha $X$ és $Y$ független változók, akkor a kovarianciafüggvényük zérus:
 					
 					$$cov(X, Y) = 0$$
+
+					\item A második momentumnak léteznie kell.
 					\end{itemize}
-			\subsection{Gauss folyamat}
-			Egy folyamatot Gauss folyamatnak nevezünk, ha a következő tulajdonságokkal rendelkezik:
+			\subsection{Stacionárius Gauss folyamat}
+			Egy folyamatot stacionárius Gauss folyamatnak nevezünk, ha a következő tulajdonságokkal rendelkezik:
 			\begin{itemize}
-				\item Az összes véges dimenziós eloszlása Gauss-eloszlású kell legyen. Ez azt jelenti, hogy az összes véges dimenziós eloszlásfüggvény szimmetrikus, és a karakterisztikus függvénye exponenciális alakú kell legyen.
+				\item Az összes véges dimenziós eloszlása Gauss-eloszlású kell legyen. A karakterisztikus függvénye exponenciális alakú kell legyen.
 				\begin{itemize}
-					\item Korreláció mátrixokat mind meg kell nézni, hogy pozitívak-e.
+					\item Korreláció mátrixokat mind meg kell nézni, hogy pozitív semidefinit-e.
 				\end{itemize}
-					\item Az összes időpillanatra vonatkozó középérték és szórás azonos kell legyen. A folyamat homogénnek tekinthető.
-				\begin{itemize}
-					\item Ezt homogenitás teszttel lehet ellenőrizni.
-				\end{itemize}
-				\item Az összes időpillanatban értékeket vesz fel végtelen dimenziós vektorokban. A végtelen dimenziós eloszlás azonban nem kell Gauss-eloszlásúnak lennie.
 			\end{itemize}
 			\subsection{Herglotz-tétel}
 				\paragraph{}
 					Legyen $R_X (u)$ a folyamat kovarianciafüggvénye, és tegyük fel, hogy ez a függvény az időbeli eltolásra invariáns, azaz csak a két időpont közötti különbségtől függ. Ekkor $R_X (u)$ Herglotz-féle sűrűségfüggvényként is felírható, azaz teljesül rá a következő:
 
-					$$R_X (u)=\int_{-\infty}^\infty e^{i*\lambda*u}*g_X(\lambda)d\lambda$$
+					$$R_X (u)=\int_{-\pi}^\pi e^{i*\lambda*u}*g_X(\lambda)d\lambda$$
 
-					ahol $g_X(\lambda)$ egy valós, szigorúan monoton növekvő eloszlásfüggvény. Más szóval, a kovarianciafüggvény Fourier-transzformáltját egy valós eloszlásfüggvénnyel lehet leírni.
+					ahol $g_X(\lambda)$ egy valós, intergálható sűrűségfüggvény. Más szóval, a kovarianciafüggvény Fourier-transzformáltját egy valós függvénnyel lehet leírni.
 			\subsection{Trajektória}
 				\paragraph{}
 					Egy tetszőleges $X_t$ folyamat trajektóriái alatt a folyamat lehetséges megvalósulását értjük.
@@ -167,17 +163,12 @@
 					\end{itemize}.
 			\subsection{kompatibilitási feltétel}
 				\paragraph{}
-					$$F_{t_{i_1},\dots t_{i_n}}(x_1, \dots, x_m, y_{m+1}, \dots,y_n) = F_{t_1, \dots,t_m}(x_1, \dots, x_m)$$
+					$$F_{t_{i_1},\dots t_{i_n}}(x_1, \dots, x_m, +\infty, \dots, +\infty) = F_{t_1, \dots,t_m}(x_1, \dots, x_m)$$
 					Ahol:
 					\begin{itemize}
 						\item $0< m < n$
 						\item tetszőleges $t_{m+1}, \dots , t_n \in [t_0,T]$
 					\end{itemize}
-			\subsection{Dirac Delta}
-				\paragraph{}
-					A Dirac-féle delta függvény egy olyan matematikai objektum, amely egy függvényként viselkedik, de a hagyományos függvényekkel szemben a végtelen sok helyen 0 értéket vesz fel, kivéve a 0 helyen. Formálisan, ha $f(x)$ egy integrálható függvény, akkor a Dirac-delta függvényt ($\delta(x)$) a következőképpen definiáljuk:
-					$$\int_{- \infty}^{\infty}f(x)\delta(x - x_0) dx = f(x_0)$$
-					Ez azt jelenti, hogy a Dirac-delta függvény egy olyan függvény, amely az integrál szempontjából viselkedik, mint a végtelenül keskeny, végtelenül magas csúcs, amelynek területe 1. Azonban, a Dirac-delta függvény matematikailag nem egy függvény a hagyományos értelemben, hanem egy úgynevezett "eloszlás". Ez azt jelenti, hogy a Dirac-delta függvény integrálható más függvényekkel, és a fenti egyenlet alapján értelmeztük az értékét egy adott pontban.
 
 			\subsection{Karakterisztikus függvény}
 				\paragraph{}
@@ -203,7 +194,7 @@
 					\end{itemize}.
 		\section{Stacionárius folyamatok}
 			\paragraph{}
-				A stacionárius folyamatok olyan valószínűségi folyamatok, amelyeknek a statisztikai tulajdonságai nem változnak az idő múlásával. Az ilyen folyamatok esetében a várható érték és a kovariancia függvénye nem függ az időtől, vagyis az idősor jellege nem változik az idő múlásával.
+				A tágabb értelemben vett stacionárius folyamatok olyan valószínűségi folyamatok, amelyeknek a statisztikai tulajdonságai nem változnak az idő múlásával. Az ilyen folyamatok esetében a várható érték és a kovariancia függvénye nem függ az időtől, vagyis az idősor jellege nem változik az idő múlásával.
 			\paragraph{}
 				A stacionárius folyamatok matematikailag jól definiáltak és számos fontos tulajdonsággal rendelkeznek, amelyek lehetővé teszik számunkra az idősorok modellezését és előrejelzését. Az ilyen folyamatokra vonatkozóan meghatározott várható érték és kovariancia függvény jellemzi a folyamatot teljes egészében. 
 			\paragraph{}
@@ -216,35 +207,20 @@
 					\end{itemize}
 					A tágabb értelemben vett stacionárius folyamatot szokás röviden stacionárius folyamatnak nevezni.
 				\paragraph{}
-					Ha egy sztochasztikus folyamat tágabb értelemben stacionárius, az azt jelenti, hogy a várható értéke és a kovariancia függvénye csak az időbeli különbségtől függ, és nem az abszolút időponttól.
-				\subsubsection{Tesztelés tágabb értelemben vett stacionárius folyamatra}
+					Ha egy sztochasztikus folyamat tágabb értelemben stacionárius, az azt jelenti, hogy a  kovariancia függvénye csak az időbeli különbségtől függ, és nem az abszolút időponttól.
+				\subsubsection{Tulajdonságai a tágabb értelemben vett stacionárius folyamatnak}
 					\paragraph{}
 						Amennyiben a következő feltételek megegyeznek az egy tágabb értelemben vett stacionárius folyamat:
 						\begin{itemize}
-							\item $\mu_X (t) = E(X_t)$
 							\item $R_X(s,t) = cov(X_s, X_t) = E(X_t - \mu_X (t)) (X_s - \mu_X (s))$
+							\item Második momentum létezik
 						\end{itemize}
 						Ahol a következők a következőket jelenti:
 						\begin{itemize}
 							\item $t, s \in \mathcal{T}$, tehát időbéli változók
 							\item $\mu_X (t)$ egy konstans, ami csak az időtől függ és megegyezik a várható értékkel
-							\item $R_X$ a kovariancia függvény
+							\item $R_X(k)$ a kovariancia függvény
 							\item $E(X_t^2) < \infty$ 
-						\end{itemize}
-				\subsubsection{tágabb értelemben stacionárius eloszlásainak feltételei}
-					\paragraph{}
-						Adott a következő véges dimenziós rendszer:
-						$$\begin{aligned}
-							P(X_t \le x) &= F_t(x) \\
-							P(X_{t_1} \le x_t, X_{t_2} \le x_2) &=F_{t_1,t_2}(x_1,x_2) \\
-							\vdots \\
-							P(X_{t_1} \le x_1 , \dots, X_{t_n} \le x_n) &= F_{t_1, \dots, t_n}=F(x_1, \dots, x_n)
-							\vdots
-						\end{aligned}$$
-						amely eleget tesz:
-						\begin{itemize}
-							\item szimmetriafeltételnek
-							\item kompatibilitási feltételnek
 						\end{itemize}
 
 			\subsection{Szűkebb értelemben stacionárius folyamat}
@@ -252,13 +228,10 @@
 
 				Ahhoz, hogy valamit szűkebb értelemben stacionáriusnak nevezzünk teljesülnie kell, hogy $(X_{t_1}, \dots , X_{t_n})$ és $(X_{t_{1+t}}, \dots, X_{t_n + t})$ valószínűségi változók  együttes eloszlása megegyezik és tágabb értelemben stacionárius folyamat.
 
-		\section{Stacionárius Gauss folyamatok}
-			\paragraph{}
-				A stacionárius Gauss-folyamat olyan Gauss-folyamat, amelynek a statisztikai tulajdonságai (középérték, szórás, autokorrelációs függvény) időtől függetlenek, vagyis az időbeli változások nem befolyásolják ezeket a tulajdonságokat.
 		\section{Spektrál előállítás}
 			\paragraph{}
 				A Herglotz-tétel szerint, a kovarianciafüggvényt kitudjuk fejezni a következő képen:
-				$$R_X (u)=\int_{-\infty}^\infty e^{i*\lambda*u}*g_X(\lambda)d\lambda$$
+				$$R_X (u)=\int_{-\pi}^\pi e^{i*\lambda*u}*g_X(\lambda)d\lambda$$
 				Ebben az összefüggésben a spektrális sűrűségfüggvény a $g_X(\lambda)$.
 			\paragraph{}
 				Analóg módon értelmezzük a diszkrét esetet is:
@@ -279,7 +252,12 @@
 					\begin{itemize}
 						\item $\mu_X$ a várható érték
 						\item $t$ az idő változó
-						\item $Z(\lambda), -\pi \le \lambda \le \pi$ egy sztochasztikus folyamat, amely zérus várható értékű
+						\item $Z(\lambda), -\pi \le \lambda \le \pi$
+							\begin{itemize}
+								\item sztochasztikus folyamat
+								\item zérus várható értékű
+								\item korrelálatlan
+							\end{itemize}
 						\item $E(Z(\lambda^{\prime\prime} - Z(\lambda^{\prime}))^2 = G_X(\lambda^{\prime \prime}) -G_X(\lambda^{\prime})$, ha $-\pi \le \lambda^{\prime} < \lambda^{\prime \prime} \le \pi$ 
 					\end{itemize}
 		\section{Becslések}
@@ -316,8 +294,8 @@
 				\begin{itemize}
 					\item korrelálatlan sorozatot alkot
 					\item várható értéke 0
-					\item Minden időpillanatban megegyezik az eloszlása.
-				\end{itemize}
+					\item nincs deriváltja
+				\end{itemize}.
 			\subsection{Fehérzaj folyamat spektrális sűrűségfüggvénye}
 				$$g_\epsilon (\lambda) = \cfrac{1}{2* \pi} \sum_{j = - \infty}^{\infty} R_{\epsilon}(j)e^{-i j \lambda}$$
 				ahol:
@@ -345,7 +323,6 @@
 					\begin{itemize}
 						\item Periodikusak
 						\item csak a két időpont közötti távolságtól függ a két időpont korrelációja
-						\item Gauss eloszlásúak
 						\item nem létezik spektrális sűrűségfüggvénye
 					\end{itemize}
 		\part{Lineáris folyamatok}
@@ -368,7 +345,7 @@
 				\begin{itemize}
 					\item $X_t$ egy sztochasztikus folyamat.
 					\item $a_s \in \mathbb{R}$ és $\sum_{s = - \infty}^{\infty} a_s^2 < \infty$.
-					\item $\forall \epsilon$ fehérzaj folyamat, $\sigma_\epsilon^2 > 0$.
+					\item $\epsilon$ fehérzaj folyamat, $\sigma_\epsilon^2 > 0$.
 					\item $\lim_{m,n \to \infty} E \left(X_t - \sum_{s = -m}^n a_s \epsilon_{t-s} \right)^2 = 0$.
 				\end{itemize}
 
@@ -387,12 +364,9 @@
 				\subsection{Kauzális folyamat spektruma}
 					\paragraph{}
 					\begin{itemize}
-						\item A kauzális folyamat spektruma kauszális: $g_X(\lambda) = 0$ minden $\lambda < 0$ esetén.
-						\item $g_X(0) = \text{var}(X_t)$, azaz a spektrális sűrűségfüggvény értéke a zérus frekvencián megegyezik a folyamat varianciájával.
-						\item A spektrális sűrűségfüggvény Fourier-transzformáltja pozitív mértékű véges mértékű eloszlás.
-						\item Az autokovariancia függvény Fourier-transzformáltja az ún. spektrális eloszlásfüggvény, amelynek integrálja a folyamat varianciájával egyezik meg.
-						\item Ha $X_t$ kauzális és $Y_t = f(X_t)$, ahol $f$ egy lineáris időinvariáns szűrő, akkor $Y_t$ is kauzális és $g_Y(\lambda) = |f(\lambda)|^2 g_X(\lambda)$.
-						\item A kauzális folyamatokat jellemezhetjük az ún. kauzalitási impulzusfüggvényükkel, amely az $X_t$ folyamat egy egység-Dirac impulzus bemenetre adott válaszfüggvénye.
+						\item $g_X(0) = \text{var}(X_t)$, azaz a spektrális sűrűségfüggvény értéke a zérus frekvencián megegyezik a folyamat varianciájával. $$g_X(\lambda) = \cfrac{\sigma_\epsilon^2}{2 \pi} \left| \sum_{t=0}^\infty a_t e^{-it\lambda}\right|^2$$
+						\item Ha $X_t$ kauzális és $Y_t = f(X_t)$, ahol $f$ egy lineáris időinvariáns szűrő, akkor $Y_t$ is kauzális és $g_Y(\lambda) = |f|^2 g_X(\lambda)$.
+						\item Léteznie kel a második momentumnak.
 					\end{itemize}
 			\section{Lineáris szűrő}
 				\paragraph{}
@@ -401,7 +375,6 @@
 					
 					\begin{itemize}
 					  \item Lineáris szűrőt jelölje $L$
-					  \item $L(X_t) = \sum_{s = -\infty}^\infty h(t-s)X_s$
 					  \item $X_t$ egy vagy több dimenziós stacionárius folyamat (tágabb értelemben)
 					  \begin{itemize}
 						    \item Van a folyamatnak $R_x(u)$-val definiált kovarianciafüggvénye
@@ -419,7 +392,7 @@
 						$$H \left(e^{-i \lambda} \right) = \sum_{t = -\infty}^{\infty} e^{-i t \lambda} h(t)$$
 						\begin{itemize}
 						    \item $H$ a transzfer függvény
-						    \item $\lambda$ az időbeli változások sebességét leíró paraméter.
+						    \item $\lambda$ az frekvencia tartományban lévő változások sebességét leíró paraméter.
 						\end{itemize}
 					\paragraph{}
 						Legyen $Y_t = L(X_t)$ stacionárius folyamat, ahol:
@@ -458,6 +431,7 @@
 					\paragraph{}
 						A következőt nevezzük az autokorrelációs függvény spektrumának:
 						$$g_X(\lambda) = \cfrac{1}{2 \pi} \sum_{k = - \infty} ^{\infty} r_X(k) e^{-i * k *\lambda}$$
+						$$r_X(k) = \dfrac{1}{R_X(0)}*R_X(k) = \dfrac{1}{\sigma^2_X}*R_X(k)$$
 						A zaj, az interferencia vagy a periodikus mintázatok kezelésében. A spektrum azonban csak egy részleges képet ad a folyamatról, és egyedül nem elegendő a folyamat jellemzéséhez. Számos más jellemzőnek, mint például az autoregressziós modell paramétereinek, a szűrő paramétereinek vagy a spektrális sűrűségfüggvénynek ismerete szükséges lehet a folyamatok részletes elemzéséhez.
 				\subsection{parciális autokorreláció}
 					\paragraph{}
@@ -501,9 +475,9 @@
 						$$x_t = \sum_{k=1}^{p}(c_k x_{t-k}) + \epsilon_t$$
 						\begin{itemize}
 							\item $x_t$ a $t.$ időpontban lévő véletlen stacionárius folyamat értéke
-							\item $c_i$ az $i.$ időponthoz tartozó autoregressziós együttható
+							\item $c_i$ az $t-i.$ időponthoz tartozó autoregressziós együttható
 							\item $p$ az autoregressziós modell rendje
-							\item $\epsilon_t$ a $t.$ időponthoz tartozó diszkrét fehérzaj.
+							\item $\epsilon_t$ a $t.$ időponthoz tartozó diszkrét idejű fehérzaj.
 						\end{itemize}
 					\subsubsection{autoregressziós együttható}
 						\paragraph{}
@@ -516,11 +490,11 @@
 						\begin{itemize}
 							\item $X_t$ az időpillanat $t$-beli megfigyelt érték
 							\item $\mu$ a várható érték
-							\item $\epsilon_t$ fehér zaj, azaz $\epsilon_t \sim WN(0, \sigma^2)$
+							\item $\epsilon_t$ fehér zaj
 							\item $d_k$ a mozgóátlag paraméterei, melyek meghatározzák a késleltetett fehér zaj lineáris kombinációját
 						\end{itemize}.
 					\subsubsection{Mozgóátlag együttható}
-						A mozgóátlag együtthatók az előző hibák lineáris kombinációját jelzik, amelyek súlyozásával a jelenlegi értéket becsülik.
+						A mozgóátlag együtthatók az fehérzaj lineáris kombinációját jelzik, amelyek súlyozásával a jelenlegi értéket becsülik.
 				\subsection{ARMA}
 					\paragraph{}
 						Az ARMA folyamat előállítása az mozgóátlag modell (MA) és az Autoregresszív modell (AR) segítségével történik:
@@ -531,14 +505,10 @@
 								\item $p$ az Autoregresszív modell (AR) rendje
 								\item $q$ a mozgóátlag modell (MA) rendje
 							\end{itemize}
-							\item $c_k$ a $k.$ időponthoz tartozó autoregressziós együttható
+							\item $c_k$ a $t-k.$ időponthoz tartozó autoregressziós együttható
 							\item $x_k$ a $k.$ időponthoz tartozó tágabb értelemben stacionárius folyamat értéke
-							\item $d_k$ a $k.$ időponthoz tartozó mozgóátlag együttható
+							\item $d_k$ a $t-k.$ időponthoz tartozó mozgóátlag együttható
 							\item $\epsilon_t$ fehérzaj
-							\begin{itemize}
-								\item várható értéke 0
-								\item szórása nagyobb, mint 1
-							\end{itemize}
 						\end{itemize}
 				\subsection{ARMA modell karakterisztikus polinomja}
 					\paragraph{}
@@ -579,16 +549,19 @@
 						\end{itemize}
 				\subsection{Paraméterek becslése}
 					\paragraph{}
-						Az ARMA modellek paraméterbecslési módszerei közé tartoznak:
+						Az ARMA modellek paraméterbecslésének a fő eszközei a Yule-Walker egyenletek, viszont a következő eszközök még nagy szerepet játszanak:
 						\begin{itemize}
-							\item \textbf{AIC (Akaike információs kritérium)}: Ez a módszer arra törekszik, hogy egy egyszerű, de hatékony modellt találjon, amely a legjobban illeszkedik az adathalmazhoz. Az AIC egy információs mutató, amely a modell illeszkedését és a modell bonyolultságát egyaránt figyelembe veszi. Az AIC értéke alapján két vagy több modell közül választhatunk, ahol az alacsonyabb érték jobb illeszkedést jelent.
-							\item \textbf{BIC (Bayes információs kritérium)}: Ez a módszer hasonló az AIC-hez, de a modell bonyolultságát még jobban figyelembe veszi. A BIC értéke alapján választhatunk a különböző modellek közül, ahol az alacsonyabb érték jelzi a jobb illeszkedést.
-							
 							\item \textbf{Maximum likelihood (maximum valószínűség)}: Ez a módszer az ARMA modell paramétereinek becslésére szolgál. A maximum likelihood módszer az a feltevés, hogy az adathalmaz az ARMA modellből származik, és az ARMA modell paramétereinek becslése olyan értékeket keres, amelyek a lehető legjobban magyarázzák az adatokat.
 							
 							\item \textbf{Mínimális négyzetek módszere}: Ez a módszer az AR modell paramétereinek becslésére szolgál. A módszer az AR modell paramétereit úgy becsüli meg, hogy minimalizálja a modell és az adatok közötti négyzetes eltérést. Ez a módszer egyszerű és könnyen alkalmazható, de csak az AR modellekhez alkalmazható.
-
-					\end{itemize}
+						\end{itemize}
+						
+					\paragraph{}
+						A következő eszközöket pedig a becslések teszteléseire használjuk:
+						\begin{itemize}
+							\item \textbf{AIC (Akaike információs kritérium)}: Ez a módszer arra törekszik, hogy egy egyszerű, de hatékony modellt találjon, amely a legjobban illeszkedik az adathalmazhoz. Az AIC egy információs mutató, amely a modell illeszkedését és a modell bonyolultságát egyaránt figyelembe veszi. Az AIC értéke alapján két vagy több modell közül választhatunk, ahol az alacsonyabb érték jobb illeszkedést jelent.
+							\item \textbf{BIC (Bayes információs kritérium)}: Ez a módszer hasonló az AIC-hez, de a modell bonyolultságát még jobban figyelembe veszi. A BIC értéke alapján választhatunk a különböző modellek közül, ahol az alacsonyabb érték jelzi a jobb illeszkedést.
+						\end{itemize}
 		\part{Wiener folyamatok}
 			\paragraph{}
 				Akkor nevezünk egy folyamatot Wiener folyamatnak ($W(t), t\ge 0$), ha következő tulajdonságokat teljesítik:
@@ -654,10 +627,6 @@
 							\item $\limsup_{t \to \infty} \dfrac{W_t}{\sqrt[2]{2*t*\ln(\ln(t))}}=1$
 							\item $\liminf_{t \to \infty} \dfrac{W_t}{\sqrt[2]{2*t*\ln(\ln(t))}}=-1$
 							\item ezek leírják a Wiener folyamat aszimptotikus viselkedését
-							\item létezik olyan $t_0$ időpont, amelytől igaz, hogy: $-(1+ \epsilon)*\sqrt[2]{2*t*\ln(\ln(t))} \le W_t \le (1+ \epsilon)*\sqrt[2]{2*\ln(\ln(t))}$
-							\begin{itemize}
-								\item $\epsilon > 0$
-							\end{itemize}
 						\end{itemize}
 					\end{itemize}
 			\section[Wiener-folyamat konstrukciója]{Konstrukciója}
