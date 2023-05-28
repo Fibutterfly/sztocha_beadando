@@ -1,6 +1,9 @@
 \documentclass[11pt,a4paper]{article}
 	\usepackage[iso]{datetime}
-	\usepackage[hungarian]{babel}
+	\def\magyarOptions{defaults=hu-min}
+	\usepackage[magyar]{babel}
+	\usepackage{t1enc}
+	\usepackage[utf8]{inputenc}
 	\usepackage{amssymb}
 	\usepackage{amsmath}
 
@@ -28,7 +31,7 @@
 				\begin{itemize}
 					\item $\Omega$ egy nem üres halmaz
 					\item $\{\omega : X(\omega) < x\} \in \mathcal{A}$
-					\item $x \in \Bbb{R}$
+					\item $x \in \mathbb{R}$
 					\item $\mathcal{A}$ az $\Omega$ részhalmazaiból alkotott esemény $\sigma$-algebrája (tehát $(\Omega, \mathcal{A})$ mérhető tér)
 				\end{itemize}
 				Akkor $X: \Omega \to \Bbb{R}$ mérhető függvényt valószínűségi változónak hívunk.
