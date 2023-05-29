@@ -485,6 +485,28 @@
 					\subsubsection{autoregressziós együttható}
 						\paragraph{}
 							Az autoregressziós együttható az autoregresszív modellben a korábbi időpontok értékeinek súlyozására használt együttható.
+					\subsection{AR karakterisztikus polinomja}
+						\paragraph{}
+							$$P(x) = x_t - \sum_{k=1}^p c_k*x(t-k)$$
+							\begin{itemize}
+								\item $P(e^{i*\lambda})$ -t nevezzük az AR karakterisztikus polinomjának
+								\begin{itemize}
+									\item $P(e^{i*\lambda})=1-c*e^{i*\lambda}$
+								\end{itemize}
+								\item $x_t$ sztochasztikus folyamat
+								\item $p$ az autoregresszív modell szintje
+								\item $c_k$ az autoregressziós együttható
+							\end{itemize}.
+					\subsection{AR spektruma}
+							\paragraph{}
+								$$g_X(\lambda) = \dfrac{\sigma^2_\epsilon}{2*\pi} * \dfrac{1}{|P(e^{i*\lambda})|^2}= \dfrac{\sigma^2_\epsilon}{2*\pi} * \dfrac{1}{|1- c*e^{i*\lambda}|^2}$$
+								Ahol:
+								\begin{itemize}
+									\item $g_X$ az $X$ sztochasztikus folyamathoz tartozó AR függvény spektrális sűrűségfüggvénye
+									\item $\sigma^2_\epsilon$ az $\epsilon$ fehérzajhoz tartozó szórás négyzet
+									\item $P(e^{i*\lambda})$ az AR karakterisztikus polinomja
+									\item $c$ az autoregressziós együttható
+								\end{itemize}.
 				\subsection{MA - Mozgóátlag modell}
 					\paragraph{}
 						A mozgóátlag modellnek a következőt szokás hívni:
@@ -498,6 +520,17 @@
 						\end{itemize}.
 					\subsubsection{Mozgóátlag együttható}
 						A mozgóátlag együtthatók az fehérzaj lineáris kombinációját jelzik, amelyek súlyozásával a jelenlegi értéket becsülik.
+					\subsection{Mozgóátlag modell spektruma}
+						\paragraph{}
+							$$g_X(\lambda) = \dfrac{\sigma^2_\epsilon}{2*\pi}*|Q(e^{i*\lambda})|^2$$
+							Ahol:
+							\begin{itemize}
+								\item $g$ a mozgóátlag spektrális sűrűségfüggvénye
+								\item $X$ sztochasztikus folyamat
+								\item $\lambda$ frekvencia változó
+								\item $\sigma^2_\epsilon$ a varianciája a fehérzajnak
+								\item $Q(e^{i*\lambda})$ mozgóátlag modell karakterisztikus polinomja
+							\end{itemize}.
 				\subsection{ARMA}
 					\paragraph{}
 						Az ARMA folyamat előállítása az mozgóátlag modell (MA) és az Autoregresszív modell (AR) segítségével történik:
@@ -513,16 +546,19 @@
 							\item $d_k$ a $t-k.$ időponthoz tartozó mozgóátlag együttható
 							\item $\epsilon_t$ fehérzaj
 						\end{itemize}
-				\subsection{ARMA modell karakterisztikus polinomja}
+				\subsection{ARMA spektruma}
 					\paragraph{}
-						Az ARMA folyamat karakterisztikus függvénye előáll a modell autoregresszív és mozgóátlag polinomjainak karakterisztikus függvényeinek szorzataként:
-						$$\phi_{ARMA}(s) = \frac{\phi_{AR}(s)}{\theta_{MA}(s)}$$
-						Ahol $\phi_{AR}(s)$ az autoregresszív polinom karakterisztikus függvénye, $\theta_{MA}(s)$ pedig a mozgóátlag polinom karakterisztikus függvénye. Az autoregresszív és mozgóátlag polinom karakterisztikus függvényei az alábbi módon adódnak:
-						$$\phi_{AR}(s) = 1 - \sum_{i=1}^p \phi_i e^{-is}$$
-						$$\theta_{MA}(s) = 1 + \sum_{i=1}^q \theta_i e^{-is}$$
-						Ahol $p$ az autoregresszív polinom fokszáma, $q$ pedig a mozgóátlag polinom fokszáma.
+						$$g_X(\lambda) = \dfrac{\sigma^2_\epsilon}{2*\pi} \left| \dfrac{Q(e^{i*\lambda})}{P(e^{i*\lambda})} \right|^2$$
+						Ahol:
+						\begin{itemize}
+							\item $g$ az ARMA folyamat spektruma
+							\item $X$ sztochasztikus folyamat
+							\item $\lambda$ a frekvencia változása
+							\item $Q$ a mozgóátlag modell karakterisztikus polinomja
+							\item $P$ az autoregresszív modell karakterisztikus polinomja
+						\end{itemize}.
 					\paragraph{}
-						Az ARMA modell karakterisztikus egyenletének megoldásai - amelyek a karakterisztikus függvény gyökei - a modell stabilitását határozzák meg, és ezek a gyökök az egységkörön lehetnek. Ha az összes gyök az egységkörön belül van, akkor az ARMA modell stabil, vagyis a modell hosszú távon is kiszámítható,tehát kauzális folyamat míg ha van gyök az egységkörön kívül, akkor az ARMA modell instabil, és a modell hosszú távon nem kiszámítható.
+						Az ARMA modell karakterisztikus egyenletének megoldásai - amelyek a karakterisztikus függvény gyökei - a modell stabilitását határozzák meg, és ezek a gyökök az egységkörön kívül lehetnek. Ha az összes gyök az egységkörön belül van, akkor az ARMA modell stabil, vagyis a modell hosszú távon is kiszámítható,tehát kauzális folyamat míg ha van gyök az egységkörön kívül, akkor az ARMA modell instabil, és a modell hosszú távon nem kiszámítható.
 				\subsection{Yule-Walker egyenletek}
 					\paragraph{}
 						A Yule-Walker egyenletrendszer az autoregresszív modell paramétereinek becslésére használt lineáris egyenletekből álló rendszer, ami a következő formában van:
@@ -544,6 +580,7 @@
 							\end{array}\right]$$
 						\begin{itemize}
 							\item $\gamma(0)$ általában $1$
+							\item $\gamma(k) = \dfrac{R_X(k)}{R_X(0)}$, normált autokorreláció-függvény
 						\end{itemize}
 						\item $c$ az autoregressziós együtthatók, ezeket szeretnénk becsülni.
 							$$c = \left[\begin{array}{c}
@@ -565,6 +602,15 @@
 							\item \textbf{AIC (Akaike információs kritérium)}: Ez a módszer arra törekszik, hogy egy egyszerű, de hatékony modellt találjon, amely a legjobban illeszkedik az adathalmazhoz. Az AIC egy információs mutató, amely a modell illeszkedését és a modell bonyolultságát egyaránt figyelembe veszi. Az AIC értéke alapján két vagy több modell közül választhatunk, ahol az alacsonyabb érték jobb illeszkedést jelent.
 							\item \textbf{BIC (Bayes információs kritérium)}: Ez a módszer hasonló az AIC-hez, de a modell bonyolultságát még jobban figyelembe veszi. A BIC értéke alapján választhatunk a különböző modellek közül, ahol az alacsonyabb érték jelzi a jobb illeszkedést.
 						\end{itemize}
+				\subsection{AR folyamat rangjának meghatározása}
+					\paragraph{}
+						$$\rho_k = \dfrac{|R^*_k|}{|R_k|}$$
+						\begin{itemize}
+							\item $\rho_k$ egy arány, amelyet $k$-adik lépésben definiálunk, fontos információ az AR folyamat rendjének meghatározása
+							\item $R_k$ a Yule-Walker egyenletrendszer autokorrelációs mátrixa
+							\item $R^*_K$ mátrixot úgy kapjuk, hogy a $k.$ oszlopot a $[\gamma(1), \gamma(2), \dots, \gamma(k)]^T$ vektorral helyettesítjük
+							\item $\gamma(k) = \dfrac{R_X(k)}{R_X(0)}$, normált autokorreláció-függvény
+						\end{itemize}.
 		\part{Wiener folyamatok}
 			\paragraph{}
 				Akkor nevezünk egy folyamatot Wiener folyamatnak ($W(t), t\ge 0$), ha következő tulajdonságokat teljesítik:
@@ -701,6 +747,24 @@
 					Egy valószínűséggel fennáll az iterált logaritmus tétel a Wiener folyamatokra:
 					$$\lim \sup_{t \to \infty} \cfrac{W(t)}{\sqrt{2t \log(\log(t))}} = 1$$
 					$$\lim \inf_{t \to \infty} \cfrac{W(t)}{\sqrt{2t \log(\log(t))}} = -1$$
+			\section{Doob általánosított egyenlőtlensége}
+					\paragraph{}
+						Ha $G \in M_2[t_0,t]$ egy lépcsős függvény, akkor a következő érvényes:
+						$$
+						P \left[ \left| \int_{t_0}^tG(s)dW_s \right| > c \right] \le \dfrac{N}{c^2} + P \left[ \int_{t_0}^t |G(s)|^2 ds > N \right]
+						$$
+						ahol: $N>0$ és $c > 0$.
+				\section{Doob-Meyer tétel}
+					\paragraph{}
+						$${st.\lim_{n \to \infty}} \int_{t_0}^t | G(s) - G_n(s)|^2ds = 0$$
+						ahol:
+						\begin{itemize}
+						\item ${st. \lim}$ azt jelenti, hogy sztochasztikus középben vett határértéke
+						\item $G, G_n \in M_2[t_0,t]$ lépcsős függvények.
+						\end{itemize}
+						Amennyiben igaz, hogy $\int_{t_0}^t G_n(s) dW_s$ által van definiálva az érték, akkor igaz az is, hogy
+						$${st. \lim_{n \to \infty}} \int_{t_0}^t G_n(s) dW_s = I(G)$$
+						ahol: $I(G)$ a $\{G_n\}$ sorozat megválasztásától független valószínűségi változó.
 			\section{Ito-féle sztochasztikus integrál}
 				\paragraph{}
 					$$\lim_{n \to \infty}\sum_{k=1}^{n} f(z_{k-1})[W(z_k)- W(z_{k-1})] = \int_{a}^b f(s) dW(s)$$
@@ -726,20 +790,8 @@
 					ahol:
 					\begin{itemize}
 						\item $a,b \in \mathbb{R}$
-						\item $G_1, G_2 \in M_2[t_0,_t]$ lépcsős függvénye
+						\item $G_1, G_2 \in M_2[t_0,t]$ lépcsős függvénye
 					\end{itemize}
-				\subsection{Vektorintegrál}
-					\paragraph{}
-						$$\int_{t_0}^t G dW = \left(\begin{array}{c}
-							\sum_{k=1}^m \int_{t_0}^t G_{ik}(s)dW_s^k \\
-							\vdots \\
-							\sum_{k=1}^m \int_{t_0}^t G_{dk}(s)dW_s^k
-						\end{array} \right);
-						W_t = \left(\begin{array}{c}
-							W_t^1 \\
-							\vdots \\
-							W_t^m
-						\end{array}\right)$$
 				\subsection{integrál átlaga nulla tulajdonság}
 					\paragraph{}
 						Ha $E(|G(s)|) < \infty \forall t_0 \le s \le t$, akkor
@@ -754,24 +806,6 @@
 				\paragraph{}
 					Minden $G \in M_2[t_0, t]$ függvényhez létezik $M_2[t_0,t]$-beli lépcsős függvények egy $G_m$ sorozata, úgy, hogy érvényes a következő összefüggés.
 					$$P\left[ \lim_{n \to \infty} {\int_{t_0}^t {|G(s) - G_n(s)|^2}ds } = 0\right] = 1$$
-			\section{Doob általánosított egyenlőtlensége}
-				\paragraph{}
-					Ha $G \in M_2[t_0,t]$ egy lépcsős függvény, akkor a következő érvényes:
-					$$
-					P \left[ \left| \int_{t_0}^tG(s)dW_s \right| > c \right] \le \dfrac{N}{c^2} + P \left[ \int_{t_0}^t |G(s)|^2 ds > N \right]
-					$$
-					ahol: $N>0$ és $c > 0$.
-			\section{Doob-Meyer tétel}
-				\paragraph{}
-					$${st.\lim_{n \to \infty}} \int_{t_0}^t | G(s) - G_n(s)|^2ds = 0$$
-					ahol:
-					\begin{itemize}
-					\item ${st. \lim}$ azt jelenti, hogy sztochasztikus középben vett határértéke
-					\item $G, G_n \in M_2[t_0,t]$ lépcsős függvények.
-					\end{itemize}
-					Amennyiben igaz, hogy $\int_{t_0}^t G_n(s) dW_s$ által van definiálva az érték, akkor igaz az is, hogy
-					$${st. \lim_{n \to \infty}} \int_{t_0}^t G_n(s) dW_s = I(G)$$
-					ahol: $I(G)$ a $\{G_n\}$ sorozat megválasztásától független valószínűségi változó.
 			\section{Sztochasztikus integrálás}
 				\paragraph{}
 					$$\begin{aligned}
