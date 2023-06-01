@@ -155,26 +155,27 @@
 \select@language {magyar} \contentsline {paragraph}{}{28}{}%
 \select@language {magyar} \contentsline {section}{\numberline {17}Ito-féle sztochasztikus integrál}{28}{}%
 \select@language {magyar} \contentsline {paragraph}{}{28}{}%
-\select@language {magyar} \contentsline {subsection}{\numberline {17.1}Ito-féle sztochasztikus integrál tulajdságai}{28}{}%
-\select@language {magyar} \contentsline {paragraph}{}{28}{}%
+\select@language {magyar} \contentsline {paragraph}{}{29}{}%
+\select@language {magyar} \contentsline {subsection}{\numberline {17.1}Ito-féle sztochasztikus integrál tulajdságai}{29}{}%
+\select@language {magyar} \contentsline {paragraph}{}{29}{}%
 \select@language {magyar} \contentsline {section}{\numberline {18}Ito Lemma}{29}{}%
 \select@language {magyar} \contentsline {paragraph}{}{29}{}%
 \select@language {magyar} \contentsline {subsection}{\numberline {18.1}integrál linearitása}{29}{}%
 \select@language {magyar} \contentsline {paragraph}{}{29}{}%
-\select@language {magyar} \contentsline {subsection}{\numberline {18.2}integrál átlaga nulla tulajdonság}{29}{}%
-\select@language {magyar} \contentsline {paragraph}{}{29}{}%
-\select@language {magyar} \contentsline {subsection}{\numberline {18.3}Ito-Kunita formula második pontja}{29}{}%
-\select@language {magyar} \contentsline {paragraph}{}{29}{}%
-\select@language {magyar} \contentsline {section}{\numberline {19}Wiener-Paley lemma}{29}{}%
-\select@language {magyar} \contentsline {paragraph}{}{29}{}%
+\select@language {magyar} \contentsline {subsection}{\numberline {18.2}integrál átlaga nulla tulajdonság}{30}{}%
+\select@language {magyar} \contentsline {paragraph}{}{30}{}%
+\select@language {magyar} \contentsline {subsection}{\numberline {18.3}Ito-Kunita formula második pontja}{30}{}%
+\select@language {magyar} \contentsline {paragraph}{}{30}{}%
+\select@language {magyar} \contentsline {section}{\numberline {19}Wiener-Paley lemma}{30}{}%
+\select@language {magyar} \contentsline {paragraph}{}{30}{}%
 \select@language {magyar} \contentsline {section}{\numberline {20}Sztochasztikus integrálás}{30}{}%
 \select@language {magyar} \contentsline {paragraph}{}{30}{}%
-\select@language {magyar} \contentsline {section}{\numberline {21}Sztochasztikus differenciál}{30}{}%
-\select@language {magyar} \contentsline {paragraph}{}{30}{}%
+\select@language {magyar} \contentsline {section}{\numberline {21}Sztochasztikus differenciál}{31}{}%
+\select@language {magyar} \contentsline {paragraph}{}{31}{}%
 \select@language {magyar} \contentsline {subsection}{\numberline {21.1}Sztochasztikus differenciál jelölése és értelmezése}{31}{}%
 \select@language {magyar} \contentsline {paragraph}{}{31}{}%
-\select@language {magyar} \contentsline {subsection}{\numberline {21.2}Ito lemma sztochasztikus differenciálegyenletekre}{31}{}%
-\select@language {magyar} \contentsline {paragraph}{}{31}{}%
-\select@language {magyar} \contentsline {paragraph}{}{31}{}%
+\select@language {magyar} \contentsline {subsection}{\numberline {21.2}Ito lemma sztochasztikus differenciálegyenletekre}{32}{}%
 \select@language {magyar} \contentsline {paragraph}{}{32}{}%
 \select@language {magyar} \contentsline {paragraph}{}{32}{}%
+\select@language {magyar} \contentsline {paragraph}{}{32}{}%
+\select@language {magyar} \contentsline {paragraph}{}{33}{}%

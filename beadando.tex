@@ -767,19 +767,41 @@
 						ahol: $I(G)$ a $\{G_n\}$ sorozat megválasztásától független valószínűségi változó.
 			\section{Ito-féle sztochasztikus integrál}
 				\paragraph{}
-					$$\lim_{n \to \infty}\sum_{k=1}^{n} f(z_{k-1})[W(z_k)- W(z_{k-1})] = \int_{a}^b f(s) dW(s)$$
+					$$I(t) = \int_0^T X(t) dW(t) = \sum_{k=0}^{n-1}(X(t_k)*[W(t_{k+1}) - W(t_k)]) + X(t_n)*[W(t)-W(t_n)]$$
 					\begin{itemize}
-						\item Eredménye: $0$ várható értékű normális eloszlású valószínűségi változó.
-						\item $\Delta W(z_k) = W(z_{k+1}) - W(z_k) \sim N(0, \Delta t)$
-						\item $f(z_{k-1})$ egy ismert szám, ezt szorozzuk a $\Delta W(z_k)$-val.
-						\item Rendelkezik a Stieltjes integrál tulajdonságaival.
+						\item $X$ Sztochasztikus folyamat, amely az $\mathcal{F}(t)$ szűréshez igazodik
+						\begin{itemize}
+							\item Ezt lépcsős formában fogjuk felhasználni, amely azt jelenti, hogy addig bontjuk egyenlő részekre, amíg nem tudjuk lépcsőként felfogni, akár végtelenül sokáig finomítjuk a lépés közöket ehhez.
+						\end{itemize}
+						\item $W(t)$ wiener folyamat
+						\begin{itemize}
+							\item $dW(t)$ a wiener folyamat növekménye
+						\end{itemize}
+						\item $I(t)$ az Ito Integrál
+						\begin{itemize}
+							\item Szintén egy sztochasztikus folyamat.
+						\end{itemize}
 					\end{itemize}
+				\paragraph{}
+					Ahhoz, hogy számolni tudjunk ezzel a következő feltételezéssel szoktunk élni:
+					$$\lim_{m \to \infty} f_n(t) \approx X(t)$$
+					\begin{itemize}
+						\item $f_n$ egyszerű, közönséges függvények
+						\begin{itemize}
+							\item sokszor ezeket lépcsőnként választjuk, de nincs megkötés rá.
+						\end{itemize}
+					\end{itemize}
+					Így átalakítva a következő formulát kapjuk:
+					$$\int_0^t X(u) dW(u) = \lim_{n \to \infty} \int_0^t f_n(u) dW(u)$$
+
 				\subsection{Ito-féle sztochasztikus integrál tulajdságai}
 					\paragraph{}
 						\begin{itemize}
-							  \item Az $f$ függvény $dW$ szerinti integráljának várható értéke $0$.
-							  \item Az integrál négyzetének várható értéke megegyezik az $f$ függvény négyzetének Riemann integráljával.
-							  \item $W(t)$-nek egy pontja sem differenciálható.
+							  \item Martingál
+							  \item Izometrikus $$E(I^2(t)) = E \int_0^t X^2(\lambda)d\lambda= ||I(t)||^2_{L^2}$$
+							  \item létezik a négyzetes varianciája, ami szintén egy sztochasztikus folyamat $$[I,I](t)= E \int_0^t X^2(\lambda)d\lambda$$
+							  \item $\mathcal{F}_t$ mérhető
+							  \item Minden tulajdonság igaz rá, amely a Stielejtes integrálra
 						\end{itemize}
 			\section{Ito Lemma}
 				\paragraph{}
