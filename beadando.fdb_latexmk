@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1685632413 "/home/filep/MATLAB-Drive/sztocha_beadando/beadando.tex" "beadando.pdf" "beadando" 1685632414 0
-  "/home/filep/MATLAB-Drive/sztocha_beadando/beadando.tex" 1685632412 53287 b3031871a00d5488f59aceb2e186e698 ""
+["pdflatex"] 1685641879 "/home/filep/MATLAB-Drive/sztocha_beadando/beadando.tex" "beadando.pdf" "beadando" 1685641880 0
+  "/home/filep/MATLAB-Drive/sztocha_beadando/beadando.tex" 1685641879 53307 28bc4fd909afaedc0187f004805b2b95 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -92,9 +92,9 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1685222002 4643411 5ced174c6d521e21dd58a10751c00482 ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1685222205 7892025 db200ceb2ac7c3fc3fc1323d22be7f38 ""
   "/usr/local/texlive/2023/texmf.cnf" 1685221987 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
-  "beadando.aux" 1685632414 22302 f7b72313db2330091894d3d3bcf98f75 "pdflatex"
-  "beadando.tex" 1685632412 53287 b3031871a00d5488f59aceb2e186e698 ""
-  "beadando.toc" 1685632414 14945 155ccff4d33a5ebc8cfe83cfbf94a213 "pdflatex"
+  "beadando.aux" 1685641880 22302 f7b72313db2330091894d3d3bcf98f75 "pdflatex"
+  "beadando.tex" 1685641879 53307 28bc4fd909afaedc0187f004805b2b95 ""
+  "beadando.toc" 1685641880 14945 155ccff4d33a5ebc8cfe83cfbf94a213 "pdflatex"
   (generated)
   "beadando.aux"
   "beadando.log"
